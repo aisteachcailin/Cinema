@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form_a {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat, sans-serif;
+}
+
+.all h3 {
+    text-align: center;
+    font-size: 40px;
+    padding-top: 30px;
+    font-family: Montserrat, sans-serif;
+}
+
+a {
+    color: #7c9ab7;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.admin {
+    background-color: #abedde;
+}
+
+.admin td {
+    padding-left: 20px;
+}
+
+.admin th {
+    padding-left: 20px;
+}
+
+.admin form {
+    padding-left: 20px;
+}
+.all td {
+    padding-left: 20px;
+}
+
+.all th {
+    padding-left: 20px;
+}
+
+.all form {
+    padding-left: 20px;
+}
+
+p {
+    margin: 10px 0;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px;
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    background: #e3e3e3;
+    border: unset;
+    cursor: pointer;
+}
+
+.msg {
+    border: 2px solid #74d8c2;
+    border-radius: 3px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.logout {
+    color: #000;
+    font-size: 20px;
+    margin-left: 50px;
+    padding: 20px;
+}
+
+.reg {
+    display: flex;
+    background-color: #abedde;
+    justify-content: space-around;
+}
+.signin {
+background-color: #abedde;
+}
+
+.butreg {
+    color: #000;
+    background: #fff;
+    border-radius: 3px;
+    border: 0.5px solid #000;
+}
+
+.butreg:hover {
+    color: #000;
+    background: #74d8c2;
+}
+
+.reg a{
+    color: #000;
+}
+
+.reg a:hover {
+    color: #74d8c2;
+}
+
+.signin a {
+    color: #000;
+}
+.signin a:hover {
+    color: #74d8c2;
+}
