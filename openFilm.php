@@ -1,34 +1,12 @@
-<?php
-require('connect.php');
-?>
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Anime Template">
-    <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Сеанс</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/plyr.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-
 <body>
+    <div class="all">
     <div id="preloder">
         <div class="loader"></div>
     </div>
@@ -80,25 +58,54 @@ require('connect.php');
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="anime__details__btn">
-                                <a href="#" class="follow-btn">Добавить в корзину</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-
-        <!-- Js Plugins -->
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/player.js"></script>
-        <script src="js/jquery.nice-select.min.js"></script>
-        <script src="js/mixitup.min.js"></script>
-        <script src="js/jquery.slicknav.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/main.js"></script>
-
+                                <table>
+    <!-- счетчик количество товаров -->
+    <form id="form1" name="form1" action="add_cart.php" method="post">
+        
+        <tr>
+            <td>
+        <div class="input-group quantity_flms">
+            <input type="button" value="-" id="button_minus">
+            <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Qty" >
+            <input type="button" value="+" id="button_plus">
+        </div>
+        <!-- начало невидимой части формы -->
+        <input type="hidden"  name="film_id" value="<?php echo $flm['id']?>" />
+        <!-- конец невидимой части формы -->
+            </td>
+            <td>
+            <div class="openedProduct-price">
+            <?php echo $flm['price'].'p';?>
+            </div>
+            </td>
+        </tr>
+    <tr><td><input class='add_to_cart' type="submit" value="В корзину" name="submit"></td></tr>
+    </form>
+    </table>    
+          </div>
+          </div>
+         </div>
+        </div>
+    </div> 
+<script>
+    var numCount = document.getElementById('num_count');
+    var plusBtn = document.getElementById('button_plus');
+    var minusBtn = document.getElementById('button_minus');
+    plusBtn.onclick = function() {
+        var qty = parseInt(numCount.value);
+        qty = qty + 1;
+        numCount.value = qty;
+    }
+    minusBtn.onclick = function() {
+        var qty = parseInt(numCount.value);
+        if(qty>1){
+            qty = qty - 1;
+        }
+        numCount.value = qty;
+    }
+</script>
+</div>
+</div>
     </body>
 
     </html>

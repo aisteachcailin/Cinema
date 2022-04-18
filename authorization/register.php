@@ -4,6 +4,7 @@
         header('Location: index.php?page=profile');
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -15,20 +16,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Регистрация</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/plyr.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>
@@ -59,15 +46,15 @@
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="email" placeholder="Электронная почта">
+                                <input type="email" name="email" placeholder="Электронная почта">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="password "placeholder="Пароль">
+                                <input type="password" name="password" placeholder="Пароль">
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="password_confirm"placeholder="Подтверждение пароля">
+                                <input type="password" name="password_confirm" placeholder="Подтверждение пароля">
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
@@ -75,7 +62,6 @@
                                 <span class="icon_image"></span>
                             </div>
                             <button type="submit" class="site-btn">Зарегистрироваться</button>
-                        <!-- </form> -->
                         <h5>У вас уже есть аккаунт? <a href="index.php?page=authorization">Войти</a></h5>
                                  <?php
             if ($_SESSION['message']) {
@@ -106,13 +92,6 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
 </body>

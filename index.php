@@ -14,8 +14,8 @@ if (!isset($_SESSION['sql'])) {
 }
 
 $sql_text = $_SESSION['sql'];
-
 $sql=$link->query($sql_text);
+
 $page=$_GET['page'];
 
 if (!isset($page)) {
@@ -33,7 +33,7 @@ if (!isset($page)) {
 } elseif ($page == 'admin') {
     require('authorization/admin.php');
 } elseif ($page == 'openFilm') {
-     $idf = $_GET['id'];
+    $idf = $_GET['id'];
     $flm = [];
     foreach ($sql as $film) {
         if($film['id'] == $idf) {
@@ -53,7 +53,7 @@ if (!isset($page)) {
         $sql = $link->query($sql_text);
         require('films.php');
 
-} /*elseif ($page == 'film_age') {
+} elseif ($page == 'film_age') {
         $idf=$_GET['id_age'];
         if ($idf == 0) {
             $_SESSION['sql'] = "SELECT * FROM `films`";
@@ -62,7 +62,7 @@ if (!isset($page)) {
         $sql_text = $_SESSION['sql'];
         $sql = $link->query($sql_text);
         require('films.php');
-}*/
+}
 //сортировка
 elseif ($page == 'sort') {
         $idf=$_GET['id_sort'];
@@ -72,12 +72,12 @@ elseif ($page == 'sort') {
        if ($idf == 2) {
         $sql_text.= " ORDER BY `name` DESC";
        }
-     /*  if ($idf == 3) {
+       if ($idf == 3) {
         $sql_text.= " ORDER BY `price` ASC";
        }
        if ($idf == 4) {
         $sql_text.= " ORDER BY `price` DESC";
-       }*/
+       }
     $sql = $link->query($sql_text);
     require ('films.php');
 }

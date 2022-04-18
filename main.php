@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
@@ -63,7 +63,7 @@
                             <div class="hero__text">
                                 <h2>Дюна</h2>
                                 <p>Новая экранизация одноимённого романа Фрэнка Герберта о том как наследник рода Атрейдесов отправляется на безжизненную планету Арракис, где обитают гигантские песчаные черви.</p>
-                                <a href="#"><span>Купить билет</span> <i class="fa fa-angle-right"></i></a>
+                                <a href="index.php?page=films"><span>Купить билет</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,10 @@
 
 
                         <div class="row">
-         <?php foreach ($sql as $flm): ?>
+         <?php
+
+         foreach ($sql as $flm): 
+            $sql=$link->query("SELECT * FROM `films`");?>
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
@@ -136,16 +139,6 @@
 
 </div>
 <!-- Search model end -->
-
-<!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/player.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
 </body>
 
 </html>

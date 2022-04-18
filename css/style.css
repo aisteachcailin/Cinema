@@ -1,42 +1,9 @@
-/******************************************************************
-  Theme Name: Anime
-  Description: Anime video tamplate
-  Author: Colorib
-  Author URI: https://colorib.com/
-  Version: 1.0
-  Created: Colorib
-******************************************************************/
-
-/*------------------------------------------------------------------
-[Table of contents]
-
-1.  Template default CSS
-	1.1	Variables
-	1.2	Mixins
-	1.3	Flexbox
-	1.4	Reset
-2.  Helper Css
-3.  Header Section
-4.  Hero Section
-5.  Banner Section
-6.  Product Section
-7.  Intagram Section
-8.  Latest Section
-9.  Contact
-10.  Footer Style
--------------------------------------------------------------------*/
-
-/*----------------------------------------*/
-
-/* Template default CSS
-/*----------------------------------------*/
-
 html,
 body {
 	height: 100%;
 	font-family: "Mulish", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	background: #0b0c2a;
+	background: #05060b;
 }
 
 h1,
@@ -69,6 +36,7 @@ h4 {
 
 h5 {
 	font-size: 18px;
+	padding: 5px;
 }
 
 h6 {
@@ -82,10 +50,62 @@ p {
 	font-weight: 400;
 	line-height: 25px;
 	margin: 0 0 15px 0;
+} 
+
+.info form {
+	padding: 20px;
 }
 
+.info p{
+	margin-left: 130px;
+	margin-top: 50px;
+	font-size: 20px;
+	color: #19bfb7;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+.info h5 span {
+	font-size: 15px;
+    color: #13928c;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.info h5 {
+	color: #fff;
+}
+.sessions {
+	margin-left: 60px;
+}
+.table_user {
+	margin-left: 10px;
+}
+
+.table_user td {
+	border-top: none;
+	color: #fff;
+}
+
+.sessions table td {
+	border-top: none;
+	color: #fff;
+}
+ td img {
+ 	padding: 10px;
+ }
+
+th, .table_user td b {
+    font-size: 15px;
+    color: #13928c;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-right: 30px;
+}
+.table_user td {
+padding-right: 20px;
+}
 img {
 	max-width: 100%;
+	color: #fff;
 }
 
 input:focus,
@@ -134,7 +154,7 @@ ol {
 	top: -6px;
 	height: 32px;
 	width: 4px;
-	background: #e53637;
+	background: #19bfb7;
 	content: "";
 }
 
@@ -147,6 +167,12 @@ ol {
 .spad {
 	padding-top: 100px;
 	padding-bottom: 100px;
+}
+
+.openedProduct-price {
+    color: #19bfb7;
+    margin-left: 20px;
+    font-weight: bold;
 }
 
 .text-white h1,
@@ -191,6 +217,12 @@ ol {
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 12px 30px;
+}
+.site-btn a{
+	color: #fff;
+}
+.site-btn a:hover{
+	color: #fff;
 }
 
 /* Preloder */
@@ -255,6 +287,10 @@ ol {
 		border: 4px solid #f44336;
 		border-left-color: transparent;
 	}
+}
+
+.all {
+	min-height: all;
 }
 
 .spacial-controls {
@@ -327,15 +363,17 @@ ol {
 -----------------------*/
 
 .header {
-	background: #070720;
+	background: #000;
 }
 
-.header__logo {
-	padding: 20px 0 17px;
+.header__logo img{
+	margin-top: 15px;
+	
 }
 
 .header__logo a {
 	display: inline-block;
+
 }
 
 .header__menu {
@@ -349,23 +387,9 @@ ol {
 	margin-right: 16px;
 }
 
-.header__menu ul li.active a {
-	background: #e53637;
-	color: #ffffff;
-}
-
-.header__menu ul li:hover a {
-	color: #ffffff;
-}
-
-.header__menu ul li:hover .dropdown {
-	top: 62px;
-	opacity: 1;
-	visibility: visible;
-}
-
-.header__menu ul li:hover .dropdown li a {
-	background: transparent;
+.header__menu ul li a:hover {
+	color: #f5793b;
+	transition: 1.5s;
 }
 
 .header__menu ul li:last-child {
@@ -509,7 +533,7 @@ ol {
 .hero__text a span {
 	font-size: 13px;
 	color: #ffffff;
-	background: #e53637;
+	background: #f5793b;
 	display: inline-block;
 	font-weight: 700;
 	letter-spacing: 2px;
@@ -522,7 +546,7 @@ ol {
 .hero__text a i {
 	font-size: 20px;
 	display: inline-block;
-	background: #e53637;
+	background: #f5793b;
 	padding: 11px 5px 16px 8px;
 	color: #ffffff;
 	border-radius: 0 4px 4px 0;
@@ -576,7 +600,7 @@ ol {
 	font-size: 36px;
 	height: 66px;
 	width: 66px;
-	background: #0b0c2a;
+	background: #05060b;
 	line-height: 66px;
 	text-align: center;
 	color: #ffffff;
@@ -660,7 +684,7 @@ ol {
 .product__item__pic .ep {
 	font-size: 13px;
 	color: #ffffff;
-	background: #e53637;
+	background: #f5793b;
 	display: inline-block;
 	padding: 2px 12px;
 	border-radius: 4px;
@@ -751,7 +775,7 @@ ol {
 	top: -6px;
 	height: 32px;
 	width: 4px;
-	background: #e53637;
+	background: #19bfb7;
 	content: "";
 }
 
@@ -956,7 +980,7 @@ ol {
 	color: #b7b7b7;
 	font-size: 15px;
 }
-.genre {
+.cat {
     display: flex;
     padding: 5px;
     align-items: center;
@@ -988,8 +1012,11 @@ ol {
 }
 
 .filter a:hover{
-    color: #86ffe3;
+    color: #f5793b;
+    transition: 0.5s;
 }
+
+
 
 /*---------------------
   Anime Details
@@ -1111,10 +1138,10 @@ ol {
 	display: inline-block;
 }
 
-.anime__details__btn .follow-btn {
+.anime__details__btn .add_to_cart{
 	font-size: 13px;
 	color: #ffffff;
-	background: #e53637;
+	background: #19bfb7;
 	display: inline-block;
 	font-weight: 700;
 	letter-spacing: 2px;
@@ -1122,28 +1149,7 @@ ol {
 	padding: 14px 20px;
 	border-radius: 4px;
 	margin-right: 11px;
-}
-
-.anime__details__btn .watch-btn span {
-	font-size: 13px;
-	color: #ffffff;
-	background: #e53637;
-	display: inline-block;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	padding: 14px 20px;
-	border-radius: 4px 0 0 4px;
-	margin-right: 1px;
-}
-
-.anime__details__btn .watch-btn i {
-	font-size: 20px;
-	display: inline-block;
-	background: #e53637;
-	padding: 11px 5px 16px 8px;
-	color: #ffffff;
-	border-radius: 0 4px 4px 0;
+	border: 0.5px solid #000;
 }
 
 .anime__details__review {
@@ -1356,7 +1362,7 @@ ol {
 
 .breadcrumb__links a i {
 	margin-right: 5px;
-	color: #e53637;
+	color: #f5793b;
 }
 
 .breadcrumb__links a:after {
@@ -1813,7 +1819,6 @@ ol {
 	height: 50px;
 	width: 100%;
 	font-size: 15px;
-	color: #b7b7b7;
 	background: #ffffff;
 	border: none;
 	padding-left: 76px;
@@ -1873,7 +1878,7 @@ ol {
 }
 
 .login__register .primary-btn {
-	background: #e53637;
+	background: #19bfb7;
 	padding: 12px 42px;
 }
 
@@ -1922,7 +1927,7 @@ ol {
 }
 
 .login__social__links ul li a.google {
-	background: #ff4343;
+	background: #f5793b;
 }
 
 .login__social__links ul li a.twitter {
@@ -1936,6 +1941,53 @@ ol {
 	top: 14px;
 }
 
+.site-btn {
+    background: #f5793b;
+    cursor: pointer;
+}
+input.add_to_cart {
+    background: #f5793b;
+    color: #fff;
+    width: 120px; 
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.input-group {
+    padding-bottom: 10px;
+}
+/*profile*/
+input.del {
+    background: #f5793b;
+    color: #fff;
+    width: 120px; 
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 2px;
+}
+.logout .site-btn {
+	color: #fff;
+	background: #19bfb7;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.logout {
+	padding-top: 220px;
+	padding-left: 10px;
+	padding-bottom: 20px;
+	
+}
 /*---------------------
   Sign Up
 -----------------------*/
@@ -1956,7 +2008,7 @@ ol {
 }
 
 .signup .login__form h5 a {
-	color: #e53637;
+	color: #19bfb7;
 	font-weight: 700;
 }
 
@@ -1982,7 +2034,7 @@ ol {
 -----------------------*/
 
 .footer {
-	background: #070720;
+	background: #000;
 	padding-top: 60px;
 	padding-bottom: 40px;
 	position: relative;
@@ -2001,7 +2053,7 @@ ol {
 	color: #ffffff;
 	height: 50px;
 	width: 50px;
-	background: #e53637;
+	background: #f5793b;
 	line-height: 50px;
 	text-align: center;
 	border-radius: 50%;

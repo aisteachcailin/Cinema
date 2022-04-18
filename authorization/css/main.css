@@ -1,4 +1,4 @@
-* {
+ {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -86,45 +86,3 @@ button {
     font-weight: bold;
 }
 
-.logout {
-    color: #000;
-    font-size: 20px;
-    margin-left: 50px;
-    padding: 20px;
-}
-
-.reg {
-    display: flex;
-    background-color: #abedde;
-    justify-content: space-around;
-}
-.signin {
-background-color: #abedde;
-}
-
-.butreg {
-    color: #000;
-    background: #fff;
-    border-radius: 3px;
-    border: 0.5px solid #000;
-}
-
-.butreg:hover {
-    color: #000;
-    background: #74d8c2;
-}
-
-.reg a{
-    color: #000;
-}
-
-.reg a:hover {
-    color: #74d8c2;
-}
-
-.signin a {
-    color: #000;
-}
-.signin a:hover {
-    color: #74d8c2;
-}

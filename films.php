@@ -2,7 +2,7 @@
 require('connect.php');
 ?>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -68,13 +68,6 @@ require('connect.php');
                         <option value="index.php?page=sort&id_sort=1">А-Я</option>
                         <option value="index.php?page=sort&id_sort=2">Я-А</option>
                     </select>
-
-                    <!-- <select class="selecter" onchange="location=value">
-                        <option value="" selected="selected">Сортировка по цене</option>
-                        <option value="index.php?page=sort&id_sort=3">по возрастанию</option>
-                        <option value="index.php?page=sort&id_sort=4">по убыванию</option>
-                    </select> -->
-
                     </forma>
 
                 </div>
@@ -83,7 +76,7 @@ require('connect.php');
                         </div>
 
                         <div class="row">
-                              <?php  $sql=$link->query("SELECT * FROM `films`");
+                              <?php 
                                 foreach ($sql as $flm): ?>
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
@@ -107,7 +100,7 @@ require('connect.php');
                    
                 </div>
                 <div class="filter" style="width: 17%;">
-            <div class="genre">
+            <div class="cat">
             
             <div class="section-title">
                 <h4>Жанры</h4>
@@ -132,6 +125,32 @@ require('connect.php');
 
                 </ul>
             </nav>
+
+            <div class="cat">
+            
+            <div class="section-title">
+                <h4>Возраст</h4>
+            </div>
+            </div>
+            <nav>
+                <ul>
+                    <?php
+                    $sql_age=$link->query("SELECT * FROM `age`");
+                    foreach ($sql_age as $age):
+                    ?>
+
+                    <li>
+                        <a href="index.php?page=film_age&id_genre=<?php
+                    echo $age['id_age'];?>"> <?php
+                    echo "+",$age['age'];?>
+                         </a>
+                        
+                    </li>
+                <?php endforeach; ?>
+                 <li><a href="index.php?page=film_age&id_age=0">Все</a></li>
+
+                </ul>
+            </nav>
             </div>
 </div>
 </div>
@@ -139,13 +158,6 @@ require('connect.php');
 <!-- Product Section End -->
 
 <!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/player.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 

@@ -1,5 +1,23 @@
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/basket.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    </head>     
+
     <!-- Header Section Begin -->
     <header class="header">
         <div class="container">
@@ -7,7 +25,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="index.php?page=index">
-                            <img src="images/logo.png" alt="">
+                            <img src="images/logo1.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -15,8 +33,8 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="index.php?page=index">Главная</a></li>
-                                <li><a href="index.php?page=films">Фильмы<span class="arrow_carrot-down"></span></a>
+                                <li><a href="index.php?page=index">Главная</a></li>
+                                <li><a href="index.php?page=films">Фильмы</a>
                                 </li>
                                 <li><a href="#">Расписание</a></li>
                                 <li><a href="#">Контакты</a></li>
@@ -27,12 +45,20 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="#"><i class="fas fa-ticket-alt"></i></a>
+                        <a data-bs-toggle="modal" data-bs-target="#tickets" href="#"><i class="fas fa-ticket-alt"></i></a>
                         <a href="index.php?page=authorization"><span class="icon_profile"></span></a>
                     </div>
                 </div>
             </div>
-            <div id="mobile-menu-wrap"></div>
         </div>
     </header>
     <!-- Header End -->
+    <!-- Js Plugins -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/player.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/mixitup.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>

@@ -1,31 +1,34 @@
 <?php
 session_start();
 $id_user = $_SESSION['user']['id'];
-
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Профиль</title>
-    <link rel="stylesheet" href="css/main.css">
+    <title>Профиль пользователя</title>
 </head>
 <body>
 <div class="all">
     <!-- Профиль -->
-          <h3>Оплаченные билеты</h3>
     <form>
-        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" alt="">
-        <h2 style="margin: 10px 0;"><?= $_SESSION['user']['full_name'] ?></h2>
-        <a href="#" ><?= $_SESSION['user']['email'] ?></a>
+    <div class="info">
+    
+        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" alt="Фото профиля">
+        <h5><span>Имя: </span><?= $_SESSION['user']['full_name'] ?></h5>
+        <h5><span>Email: </span><?= $_SESSION['user']['email'] ?></h5>
+        <p>Билеты</p>
+        </div>
+        <div class="table_user">
          <table>
             <tr>
                 <td></td>
                 <td><b>Фильм</b></td>
                 <td><b>Дата и время</b></td>
-                <td><b>Количество</b></td>
                 <td><b>Цена</b></td>
+                <td><b>Количество</b></td>
+              
             </tr>
 
 <?php
@@ -49,24 +52,24 @@ $id_user = $_SESSION['user']['id'];
             ?> 
 
                 <tr>
-                    <td><img width="200px" src="<?php echo $flm_m['imgs']; ?>" /></td>
+                    <td><img width="100px" src="<?php echo $flm_m['imgs']; ?>" /></td>
                     <td><?php echo $flm_m['name']; ?></td>
                     <td><?php echo $flm_m['daytime']; ?></td>
-                    <td> <?php echo $kol; ?> </td>
                     <td><?php echo $kol*$flm_m['price'].'р'; ?></td>
+                    <td> <?php echo $kol; ?> </td>
                 </tr>
         <?php
         $Sum +=$kol*$flm_m['price'];
         }   
         }        
         }
-
         ?>
         <tr>
              <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum ?></b></td>
          </tr> 
         </table>
-        <a href="authorization/handler_form/logout.php" class="logout">Выход</a>
+        </div>
+<div class="logout"><button class="site-btn"><a href="authorization/handler_form/logout.php" class="logout">Выход</a></button></div>
     </form>
 </div>
 

@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,23 +8,28 @@ session_start();
 <meta charset="UTF-8">
 </head>
 <body>
-    <div class="admin">
+    <div class="all">
+<form>
     <!-- Профиль администратора -->
-    <form >
-        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" alt="">
-        <h2 style="margin: 10px 0;"><?= $_SESSION['user']['full_name'] ?></h2>
-</form>
+   <div class="info">
+   
+        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" alt="Фото профиля">
+        <h5><span>Имя: </span><?= $_SESSION['user']['full_name'] ?></h5>
+        <h5><span>Email: </span><?= $_SESSION['user']['email'] ?></h5>
 
+<p>Управление сеансами</p>
+</div>
+<div class="sessions">
 <?php
 
     echo "<table><tr><th>Фильм</th><th>Цена</th><th></th></tr>";
     foreach($sql as $row){
         echo "<tr>";
             echo "<td>" . $row["name"] . "</td>";
-            echo "<td>" . $row["price"] . "</td>";
-            echo "<td><form action='delete.php' method='post'>
+            echo "<td>" . $row["price"] . "р" . "</td>";
+            echo "<td><form action='delete_film.php' method='post'>
                         <input type='hidden' name='id' value='" . $row["id"] . "' />
-                        <input type='submit' class='butreg' value='Удалить'>
+                        <input type='submit' class='del' value='Удалить'>
                    </form></td>";
         echo "</tr>";
     }
@@ -34,7 +38,8 @@ mysqli_free_result($sql);
 
 ?>
 
-        <a href="authorization/handler_form/logout.php" class="logout">Выход</a>
+</div>
+<div class="logout"><button class="site-btn"><a href="authorization/handler_form/logout.php" class="logout">Выход</a></button></div>
     </form>
    </div>
 </body>
