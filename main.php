@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Anime Template">
-    <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cinema Universe</title>
@@ -41,7 +39,7 @@
                             <div class="hero__text">
                                 <h2>Титан</h2>
                                 <p>После автоаварии, в которую Алекса попала в детстве, в голове у неё титановая пластина. 15 лет спустя она работает стриптизёршей, а когда беременеет совершенно невероятным образом, это провоцирует у девушки всплеск неконтролируемой агрессии.</p>
-                                <a href="#"><span>Купить билет</span> <i class="fa fa-angle-right"></i></a>
+                                <a href="index.php?page=openFilm&id=13"><span>Купить билет</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -52,7 +50,7 @@
                             <div class="hero__text">
                                 <h2>Кислород</h2>
                                 <p>Женщина приходит в себя в криогенной камере и понимает, что не может вспомнить ни кто она такая, ни как здесь оказалась. Единственное, что может ей помочь — виртуальный помощник МИЛО, но он отказывается выполнять некоторые команды без пароля. А уровень кислорода тем временем неумолимо падает.</p>
-                                <a href="#"><span>Купить билет</span> <i class="fa fa-angle-right"></i></a>
+                                <a href="index.php?page=openFilm&id=14"><span>Купить билет</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -63,7 +61,7 @@
                             <div class="hero__text">
                                 <h2>Дюна</h2>
                                 <p>Новая экранизация одноимённого романа Фрэнка Герберта о том как наследник рода Атрейдесов отправляется на безжизненную планету Арракис, где обитают гигантские песчаные черви.</p>
-                                <a href="index.php?page=films"><span>Купить билет</span> <i class="fa fa-angle-right"></i></a>
+                                <a href="index.php?page=openFilm&id=12"><span>Купить билет</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -101,7 +99,7 @@
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg"><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><img src="<?php echo $flm['imgs'];?>"></a>
-                                        <div class="ep">18 / 18</div>
+                                        <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                         <div class="view"><?php echo $flm['year'];?></div>
                                     </div>
                                     <div class="product__item__text">
@@ -138,7 +136,6 @@
 
 
 </div>
-<!-- Search model end -->
 </body>
 
 </html>

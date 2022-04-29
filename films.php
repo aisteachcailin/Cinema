@@ -6,26 +6,9 @@ require('connect.php');
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Anime Template">
-    <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Фильмы</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/plyr.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <body>
@@ -56,21 +39,30 @@ require('connect.php');
                     <div class="product__page__content">
                         <div class="product__page__title">
                             <div class="row">
-                                <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="section-title">
                                         <h4>Фильмы</h4>
                                     </div>
-                                </div>
-                                        <div class="sort">
-                    <forma action="">
+                    <div class="sort">
+                        <div class="sort_text">Сортировать:</div>
+                        <forma action="">
                     <select class="selecter" onchange="location=value">
-                        <option value="" selected="selected">Сортировка по названию</option>
+                        <option value="" selected="selected">По дате</option>
+                        <option value="index.php?page=sort&id_sort=5">Самые новые</option>
+                        <option value="index.php?page=sort&id_sort=6">Самые старые</option>
+                    </select>
+                    <select class="selecter" onchange="location=value">
+                        <option value="" selected="selected">По названию</option>
                         <option value="index.php?page=sort&id_sort=1">А-Я</option>
                         <option value="index.php?page=sort&id_sort=2">Я-А</option>
                     </select>
+                    <select class="selecter" onchange="location=value">
+                        <option value="" selected="selected">По цене</option>
+                        <option value="index.php?page=sort&id_sort=3">по возрастанию</option>
+                        <option value="index.php?page=sort&id_sort=4">по убыванию</option>
+                    </select>
                     </forma>
 
-                </div>
+                    </div>
                             </div>
                             </div>
                         </div>
@@ -82,7 +74,7 @@ require('connect.php');
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg"><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><img src="<?php echo $flm['imgs'];?>"></a>
-                                        <div class="ep">18 / 18</div>
+                                        <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                         <div class="view"><?php echo $flm['year'];?></div>
                                     </div>
                                     <div class="product__item__text">
@@ -99,7 +91,7 @@ require('connect.php');
                     </div>
                    
                 </div>
-                <div class="filter" style="width: 17%;">
+                <div class="filter_genre" style="width: 17%;">
             <div class="cat">
             
             <div class="section-title">
@@ -157,8 +149,6 @@ require('connect.php');
 </section>
 <!-- Product Section End -->
 
-<!-- Js Plugins -->
-<script src="js/main.js"></script>
 </body>
 
 </html>

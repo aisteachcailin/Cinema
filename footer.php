@@ -94,3 +94,18 @@
 
   </footer>
   <!-- Footer Section End -->
+  <!-- Js Plugins -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/player.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/mixitup.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+<!--     <script src="calendar-14/js/jquery-3.3.1.min.js"></script>
+    <script src="calendar-14/js/popper.min.js"></script>
+    <script src="calendar-14/js/bootstrap.min.js"></script>
+    <script src="calendar-14/js/rome.js"></script>
+
+    <script src="calendar-14/js/main.js"></script> -->

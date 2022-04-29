@@ -1,10 +1,10 @@
 .nice-select {
+  margin: 5px;
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
   border-radius: 5px;
   border: solid 1px #e8e8e8;
   box-sizing: border-box;
-  clear: both;
   cursor: pointer;
   display: block;
   float: left;

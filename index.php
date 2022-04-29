@@ -1,3 +1,4 @@
+<link rel="icon" href="css/favicon.ico">
 <?php 
 session_start();
 require('header.php');
@@ -62,7 +63,8 @@ if (!isset($page)) {
         $sql_text = $_SESSION['sql'];
         $sql = $link->query($sql_text);
         require('films.php');
-}
+
+} 
 //сортировка
 elseif ($page == 'sort') {
         $idf=$_GET['id_sort'];
@@ -78,6 +80,13 @@ elseif ($page == 'sort') {
        if ($idf == 4) {
         $sql_text.= " ORDER BY `price` DESC";
        }
+       if ($idf == 5) {
+        $sql_text.= " ORDER BY `day` ASC";
+       }
+       if ($idf == 6) {
+        $sql_text.= " ORDER BY `day` DESC";
+       }
+
     $sql = $link->query($sql_text);
     require ('films.php');
 }
