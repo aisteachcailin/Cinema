@@ -1,4 +1,3 @@
-<link rel="icon" href="css/favicon.ico">
 <?php 
 session_start();
 require('header.php');

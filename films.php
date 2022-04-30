@@ -43,12 +43,12 @@ require('connect.php');
                                         <h4>Фильмы</h4>
                                     </div>
                     <div class="sort">
-                        <div class="sort_text">Сортировать:</div>
+                        <div class="sort_text"><i class="fal fa-sort-alt"></i>Сортировать:</div>
                         <forma action="">
                     <select class="selecter" onchange="location=value">
                         <option value="" selected="selected">По дате</option>
-                        <option value="index.php?page=sort&id_sort=5">Самые новые</option>
-                        <option value="index.php?page=sort&id_sort=6">Самые старые</option>
+                        <option value="index.php?page=sort&id_sort=6">Самые новые</option>
+                        <option value="index.php?page=sort&id_sort=5">Самые старые</option>
                     </select>
                     <select class="selecter" onchange="location=value">
                         <option value="" selected="selected">По названию</option>
@@ -78,6 +78,14 @@ require('connect.php');
                                         <div class="view"><?php echo $flm['year'];?></div>
                                     </div>
                                     <div class="product__item__text">
+                              <p>  <?php
+                                $sql_gen=$link->query("SELECT * FROM `genre`");
+                                    foreach ($sql_gen as $gen):
+                                            if ($gen['id_genre'] == $flm['genre'])
+                                                {
+                                                    echo "Жанр: ".$gen['name'];
+                                                 }
+                                    endforeach; ?></p>
                                         <ul>
                                             <li><div class="age"><?php echo "+", $flm['age'];?></div></li>
                                             <h5><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><?php echo $flm['name'];?></a></h5>
@@ -132,9 +140,9 @@ require('connect.php');
                     ?>
 
                     <li>
-                        <a href="index.php?page=film_age&id_genre=<?php
+                        <a href="index.php?page=film_age&id_age=<?php
                     echo $age['id_age'];?>"> <?php
-                    echo "+",$age['age'];?>
+                    echo "+".$age['age'];?>
                          </a>
                         
                     </li>

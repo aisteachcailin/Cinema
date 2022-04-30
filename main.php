@@ -89,12 +89,11 @@
                             </div>
                         </div>
 
-
                         <div class="row">
          <?php
-
+$sql=$link->query("SELECT * FROM `films`");
          foreach ($sql as $flm): 
-            $sql=$link->query("SELECT * FROM `films`");?>
+            ?>
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
@@ -103,6 +102,14 @@
                                         <div class="view"><?php echo $flm['year'];?></div>
                                     </div>
                                     <div class="product__item__text">
+                                <p>  <?php
+                                $sql_gen=$link->query("SELECT * FROM `genre`");
+                                    foreach ($sql_gen as $gen):
+                                            if ($gen['id_genre'] == $flm['genre'])
+                                                {
+                                                    echo "Жанр: ".$gen['name'];
+                                                 }
+                                    endforeach; ?></p>
                                         <ul>
                                             <li><div class="age"><?php echo "+", $flm['age'];?></div></li>
                                             <h5><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><?php echo $flm['name'];?></a></h5>
@@ -113,13 +120,12 @@
                             </div>
 
                                     <?php endforeach;?>
-
-
     </div>
 
 </div>
 </div>
- <div class="col-lg-4 col-md-6 col-sm-8">
+
+                <div class="col-lg-4 col-md-6 col-sm-8">
                     <div class="product__sidebar">
                         <div class="product__sidebar__view">
                             <div class="section-title">
@@ -131,11 +137,36 @@
                                 <li data-filter=".month">Месяц</li>
                                 <li data-filter=".years">Год</li>
                             </ul>
-</div>
-</section>
+                                   <?php
+        $i=0;
+         foreach ($sql as $flm): 
+            $sql=$link->query("SELECT * FROM `films` ORDER BY `rating` DESC");
+            $i++;
+            if ($i > 5) {
+                break;
+            }
+                ?>
+                            <div class="filter__gallery">
+                                <div class="product__sidebar__view__item set-bg mix day years"
+                                data-setbg="<?php echo $flm['imgs'];?>">
 
 
-</div>
+
+
+                                <div class="ep"><?php echo $flm['rating']."/10";?></div>
+                                <div class="view"><?php echo $flm['year'];?></div>
+                                <h5><a href="#"><?php echo $flm['name'];?></a></h5>
+                                <!-- <div class="descr"><?php echo $flm['descr'];?></div> -->
+                            </div>
+                        </div>
+                        <?php endforeach;?>
+                    </div>
+                </div>
+            </div>
+             
+        </div>
+    </div>
+     </section>
 </body>
 
 </html>
