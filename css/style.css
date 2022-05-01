@@ -55,6 +55,9 @@ p {
 p span {
 	color: #f0f0f0;
 }
+hr {
+	background-color: #20243c;
+}
 /*profile and admin*/
 .info form {
 	padding: 20px;
@@ -64,7 +67,7 @@ p span {
 	margin-left: 130px;
 	margin-top: 50px;
 	font-size: 20px;
-	color: #19bfb7;
+	color: #13928c;
 	letter-spacing: 3px;
 	text-transform: uppercase;
 }
@@ -123,7 +126,7 @@ input.del {
 }
 .logout .site-btn {
 	color: #fff;
-	background: #19bfb7;
+	background: #13928c;
     font-weight: bold;
     font-size: 15px;
     letter-spacing: 1px;
@@ -182,17 +185,17 @@ ol {
 	top: -6px;
 	height: 32px;
 	width: 4px;
-	background: #19bfb7;
+	background: #13928c;
 	content: "";
 }
 
 .spad {
-	padding-top: 65px;
 	padding-bottom: 100px;
+	padding-top: 45px;
 }
 
 .openedProduct-price {
-    color: #19bfb7;
+    color: #13928c;
     margin-left: 20px;
     font-weight: bold;
 }
@@ -669,16 +672,16 @@ ol {
 
 .product {
 	padding-bottom: 60px;
-	padding-top: 80px;
+	padding-top: 40px;
+}
+
+section.product.spad.film {
+	padding-bottom: 60px;
 }
 
 .btn__all {
 	text-align: right;
 	margin-bottom: 30px;
-}
-
-.trending__product {
-	margin-bottom: 50px;
 }
 
 .popular__product {
@@ -702,6 +705,15 @@ ol {
 	position: relative;
 	border-radius: 5px;
 	width: 220px;
+}
+
+.anime__details__rating .ep {
+	font-size: 13px;
+	color: #ffffff;
+	background: #e53637;
+	display: inline-block;
+	padding: 2px 12px;
+	border-radius: 4px;
 }
 
 .product__item__pic .ep {
@@ -790,7 +802,9 @@ ol {
 	transition: 1s;
 	opacity: 0.2;
 }*/
-
+.film_info {
+    display: flex;
+}
 .product__item__text h5 a {
 	color: #ffffff;
 	font-weight: 700;
@@ -813,7 +827,7 @@ ol {
 	top: -6px;
 	height: 32px;
 	width: 4px;
-	background: #19bfb7;
+	background: #13928c;
 	content: "";
 }
 
@@ -1088,7 +1102,7 @@ ol {
 -----------------------*/
 
 .anime-details {
-	padding-top: 60px;
+	padding-top: 45px;
 }
 
 .anime__details__content {
@@ -1099,10 +1113,29 @@ ol {
 	position: relative;
 }
 
-.anime__details__text p {
+.anime__details__text p,
+.facts p,
+.schedule p{
 	color: #b7b7b7;
 	font-size: 18px;
 	line-height: 30px;
+}
+
+.schedule {
+	padding-bottom: 40px;
+}
+form td {
+    padding-right: 20px;
+}
+
+.anime__details__rating p {
+	font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 2px;
+    padding: 5px;
+    display: contents;
 }
 
 .anime__details__pic {
@@ -1176,6 +1209,7 @@ ol {
 
 .anime__details__widget ul {
 	margin-bottom: 20px;
+	padding-left: 20px;
 }
 
 .anime__details__widget ul li {
@@ -1206,7 +1240,7 @@ ol {
 .anime__details__btn .add_to_cart{
 	font-size: 13px;
 	color: #ffffff;
-	background: #19bfb7;
+	background: #13928c;
 	display: inline-block;
 	font-weight: 700;
 	letter-spacing: 2px;
@@ -1298,13 +1332,16 @@ ol {
 	padding: 10px 15px;
 	border-radius: 2px;
 }
-
+.recommend {
+	
+}
 /*---------------------
   Anime Watching
 -----------------------*/
 
 .anime__video__player {
 	margin-bottom: 70px;
+	max-width: 80%;
 }
 
 .anime__video__player .plyr--video {
@@ -1409,9 +1446,13 @@ ol {
 	background: #ffffff;
 }
 
+
 /*---------------------
   Breadcrumb
 -----------------------*/
+.breadcrumb__links {
+	padding-bottom: 30px;
+}
 
 .breadcrumb-option {
 	padding-top: 35px;
@@ -1438,11 +1479,11 @@ ol {
 	font-family: "FontAwesome";
 }
 
-.breadcrumb__links span {
+/*.breadcrumb__links span {
 	font-size: 15px;
 	color: #b7b7b7;
 	display: inline-block;
-}
+}*/
 
 /*---------------------
     Normal Breadcrumb
@@ -1943,7 +1984,7 @@ ol {
 }
 
 .login__register .primary-btn {
-	background: #19bfb7;
+	background: #13928c;
 	padding: 12px 42px;
 }
 
@@ -2013,16 +2054,23 @@ input.add_to_cart {
     font-size: 12px;
     text-align: center;
     font-weight: bold;
-    border-radius: 3px;
+    border-color: #e53637;
+    border-radius: 4px;
     padding: 5px;
     text-transform: uppercase;
     letter-spacing: 3px;
+    margin-left: 80px;
 }
 .input-group {
     padding-bottom: 10px;
+    margin-left: 30px;
+}
+
+ .input-group.quantity_flms {
+   margin-left: 50px;
+}
 }
 	
-}
 /*---------------------
   Sign Up
 -----------------------*/
@@ -2043,7 +2091,7 @@ input.add_to_cart {
 }
 
 .signup .login__form h5 a {
-	color: #19bfb7;
+	color: #13928c;
 	font-weight: 700;
 }
 

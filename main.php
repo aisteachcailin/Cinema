@@ -149,13 +149,9 @@ $sql=$link->query("SELECT * FROM `films`");
                             <div class="filter__gallery">
                                 <div class="product__sidebar__view__item set-bg mix day years"
                                 data-setbg="<?php echo $flm['imgs'];?>">
-
-
-
-
                                 <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                 <div class="view"><?php echo $flm['year'];?></div>
-                                <h5><a href="#"><?php echo $flm['name'];?></a></h5>
+                                <h5><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><?php echo $flm['name'];?></a></h5>
                                 <!-- <div class="descr"><?php echo $flm['descr'];?></div> -->
                             </div>
                         </div>
