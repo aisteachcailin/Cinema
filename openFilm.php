@@ -31,10 +31,7 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="anime__details__pic set-bg"><img src="<?php echo $flm['imgs'];?>" width="100%"/>
-                        </div>
-                        
-
-                        
+                        </div>                    
                     </div>
                     <div class="col-lg-9">
                         <div class="anime__details__text">
@@ -63,18 +60,16 @@
                                             <li><span>Страна:</span><?php echo $flm['country'];?></li>
                                         </ul></div>
                                        <div class="second_info"> <ul>
-                                            <li><span>Главные герои:</span><?php echo $flm['main_roles'];?></li>
                                             <li><span>Длительность:</span><?php echo $flm['lasting']." мин.";?></li>
+                                            <li><span>Главные герои:</span><?php echo $flm['main_roles'];?></li>
                                         </ul></div>
                                     </div>
                                     </div>
-                                </div>
-                                
-          </div>
-          </div>
+                                </div>              
+                              </div>
+                              </div>
 
-         </div>
-
+                             </div>
     <section class="product spad film">
         <div class="container">
             <div class="row">
@@ -97,7 +92,7 @@
                     <hr>
                     <form id="form1" name="form1" action="add_cart.php" method="post">
                     <table>
-                        <td>                            <p><?php
+                        <td><p><?php
                                 $sql_day=$link->query("SELECT * FROM `day`");
                                     foreach ($sql_day as $day):
                                             if ($day['id_day'] == $flm['day'])
@@ -105,7 +100,7 @@
                                                     echo $day['day'];
                                                  }
                                     endforeach; ?></p></td>
-                        <td><p><?php echo $flm['price'].'р';?></p></td>
+                        <td><p><?php echo $flm['price'].'₽';?></p></td>
                         <td><p><div class="input-group quantity_flms">
                         <input type="button" value="-" id="button_minus">
                         <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Qty" >
@@ -120,8 +115,6 @@
                     <hr>
                       </form>
                     </div>
-
-
                     <div class="facts">
                     <div class="section-title">
                                 <h4>Интересные факты</h4>

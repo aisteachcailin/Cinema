@@ -10,28 +10,31 @@ $id_user = $_SESSION['user']['id'];
     <title>Профиль пользователя</title>
 </head>
 <body>
-<div class="all">
-    <!-- Профиль -->
-    <form>
-    <div class="info">
-    
-        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200" alt="Фото профиля">
-        <h5><span>Имя: </span><?= $_SESSION['user']['full_name'] ?></h5>
-        <h5><span>Email: </span><?= $_SESSION['user']['email'] ?></h5>
-        <p>Билеты</p>
-        </div>
-        <div class="table_user">
-         <table>
-            <tr>
-                <td></td>
-                <td><b>Фильм</b></td>
-                <td><b>Дата и время</b></td>
-                <td><b>Цена</b></td>
-                <td><b>Количество</b></td>
-              
-            </tr>
 
-<?php
+<section class="profile-detail">
+    <form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="profile-detail__personal">
+                    <div>
+                        <img src="images/kot.jpg" width="200vh" height="200vh" alt="">
+                    </div>
+                        <div class="profile-text">
+                        <div class="profile-title">
+                            <h2><?= $_SESSION['user']['full_name'] ?></h2>
+                        </div>
+                        <div class="profile-email">
+                            <i class="fa fa-envelope"></i>
+                            <a href="#"><?= $_SESSION['user']['email'] ?></a>
+                        </div>
+                        </div>
+                </div>
+                            
+                <div class="profile-detail__info">
+                        <p>Билеты</p>
+                    <table class="ticket-info">
+                            <?php
         $sql_m= $link->query("SELECT * FROM `films`");
         $Sum = 0;
         $sql_tickets= $link->query("SELECT * FROM `tickets`");
@@ -50,28 +53,45 @@ $id_user = $_SESSION['user']['id'];
             }
 
             ?> 
-
-                <tr>
-                    <td><img width="100px" src="<?php echo $flm_m['imgs']; ?>" /></td>
-                    <td><?php echo $flm_m['name']; ?></td>
-                    <td><?php echo $flm_m['daytime']; ?></td>
-                    <td><?php echo $kol*$flm_m['price'].'р'; ?></td>
-                    <td> <?php echo $kol; ?> </td>
-                </tr>
-        <?php
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <em><?php echo '"'.$flm_m['name'].'"'; ?></em>
+                                </td>
+                                <td>
+                                    <?php echo $flm_m['daytime']; ?>
+                                </td>
+                                <td>
+                                   <?php echo $flm_m['daytime']; ?>
+                                </td>
+                                <td>
+                                <?php echo $kol; ?>
+                                </td>
+                                <td>
+                                <?php echo $kol*$flm_m['price'].'₽'; ?>
+                                </td>
+                            </tr>
+                               <?php
         $Sum +=$kol*$flm_m['price'];
         }   
         }        
         }
         ?>
         <tr>
-             <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum ?></b></td>
-         </tr> 
-        </table>
-        </div>
-<div class="logout"><button class="site-btn"><a href="authorization/handler_form/logout.php" class="logout">Выход</a></button></div>
-    </form>
-</div>
+             <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum.'₽' ?></b></td>
+         </tr>
+                        </tbody>
+                    </table>
 
+                </div>
+           
+            </div>
+
+
+ </div>
+            </div>
+            <div class="logout"><button class="site-btn"><a href="authorization/handler_form/logout.php" class="logout">Выход</a></button></div>
+            </form>
+</section>
  </body>
 </html>

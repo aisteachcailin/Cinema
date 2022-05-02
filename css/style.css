@@ -59,71 +59,48 @@ hr {
 	background-color: #20243c;
 }
 /*profile and admin*/
-.info form {
-	padding: 20px;
+
+section.profile-detail {
+    padding-bottom: 100px;
+}
+.profile-detail__info {
+    padding-top: 50px;
 }
 
-.info p{
-	margin-left: 130px;
-	margin-top: 50px;
-	font-size: 20px;
-	color: #13928c;
-	letter-spacing: 3px;
-	text-transform: uppercase;
+.profile-detail__personal img{
+    border-color: #28e3da;
+    border-style: solid;
+    border-radius: 100%;
+    padding: 3px;
 }
-.info h5 span {
-	font-size: 15px;
-    color: #13928c;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+.profile-detail__personal {
+    margin-top: 50px;
+    display: flex;
 }
-.info h5 {
+.profile-text {	
+padding-left: 25px;
+padding-top: 45px;
+}
+.profile-email i{
+	color: #054744;
+}
+.profile-email a{
+	color: #28e3da;
+}
+
+.profile-title h2 {
 	color: #fff;
 }
-.sessions {
-	margin-left: 60px;
-}
-.table_user {
-	margin-left: 10px;
-}
 
-.table_user td {
-	border-top: none;
-	color: #fff;
-}
-
-.sessions table td {
-	border-top: none;
-	color: #fff;
-}
- td img {
- 	padding: 10px;
- }
-
-th, .table_user td b {
-    font-size: 15px;
-    color: #13928c;
-    letter-spacing: 1px;
+.profile-detail__info p {
+	color: #ffffff;
+    font-weight: 600;
+    font-family: "Mulish", sans-serif;
+    font-size: 20px;
     text-transform: uppercase;
-    padding-right: 30px;
-}
-.table_user td {
-padding-right: 20px;
+    letter-spacing: 2px;
 }
 
-input.del {
-    background: #e53637;
-    color: #fff;
-    width: 120px; 
-    font-size: 12px;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 3px;
-    padding: 5px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin: 2px;
-}
 .logout .site-btn {
 	color: #fff;
 	background: #13928c;
@@ -131,14 +108,14 @@ input.del {
     font-size: 15px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-left: 200px;
 }
 .logout {
-	padding-top: 220px;
-	padding-left: 10px;
-	padding-bottom: 20px;
+	margin-top: 220px;
+
 }
+
 img {
-	max-width: 100%;
 	color: #fff;
 }
 
@@ -1115,7 +1092,8 @@ section.product.spad.film {
 
 .anime__details__text p,
 .facts p,
-.schedule p{
+.schedule p,
+form td {
 	color: #b7b7b7;
 	font-size: 18px;
 	line-height: 30px;
@@ -1125,7 +1103,8 @@ section.product.spad.film {
 	padding-bottom: 40px;
 }
 form td {
-    padding-right: 20px;
+    padding-right: 40px;
+    padding-left: 10px;
 }
 
 .anime__details__rating p {
@@ -1959,7 +1938,7 @@ form td {
 }
 
 .login__form form button {
-	border-radius: 0;
+	border-radius: 4px;
 	margin-top: 10px;
 }
 
@@ -1986,6 +1965,7 @@ form td {
 .login__register .primary-btn {
 	background: #13928c;
 	padding: 12px 42px;
+	border-radius: 4px;
 }
 
 .login__social {
