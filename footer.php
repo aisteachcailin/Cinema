@@ -55,7 +55,8 @@
          </tr> 
         <tr>
           <span><td align="left" colspan="3"><b><button type="button" class="btn btn-dark" data-bs-dismiss="modal">Продолжить просмотр</button></b></td>
-          <td align="right" colspan="4"><b><a href="add_basket.php"><button type="button" class="btn btn-light" >Оплатить билеты</button></a></b></td></span>
+          <td><a href="reserve_tickets.php"><button type="button" class="btn btn-dark">Забронировать билеты</button></td>
+          <td align="right" colspan="4"><b><a href="pay_tickets.php"><button type="button" class="btn btn-light" >Оплатить билеты</button></a></b></td></span>
         </tr>         
                   
         </table>

@@ -65,6 +65,7 @@ section.profile-detail {
 }
 .profile-detail__info {
     padding-top: 50px;
+    display: inline-flex;
 }
 
 .profile-detail__personal img{
@@ -111,7 +112,7 @@ padding-top: 45px;
     margin-left: 200px;
 }
 .logout {
-	margin-top: 220px;
+	margin-top: 150px;
 
 }
 
