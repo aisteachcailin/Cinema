@@ -867,6 +867,24 @@ section.product.spad.film {
 	top: 10px;
 }
 
+.price {
+	font-size: 13px;
+	color: #ffffff;
+	background: #19bfb7;
+	display: inline-flex;
+	padding: 2px 10px;
+	border-radius: 4px;
+	position: absolute;
+	left: 10px;
+    top: 290px;
+}
+
+.price:hover{
+	width: 70px;
+	height: 25px;
+
+	64.04 23.5
+}
 .product__sidebar__view__item h5 {
 	position: absolute;
 	left: 0;

@@ -28,17 +28,18 @@
             $flm_m = [];
             foreach ($sql_m as $film_m) {
                 if($film_m['id'] == $a){
-                $flm_m= $film_m;
+                $flm_m = $film_m;
                 break;  
                 }   
-            }?> 
+            }
+            ?> 
 
                 <tr>
                     <td><img width="50px" src="images/ticket.png"/></td>
                     <td><?php echo $flm_m['name']; ?></td>
                     <td><?php echo $flm_m['daytime']; ?></td>
                     <td><input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="<?php echo $kol; ?>" title="Qty"></td>
-                    <td><?php echo $kol*$flm_m['price'].'р'; ?></td>
+                    <td><?php echo $kol*$flm_m['price'].'₽'; ?></td>
                     
                 </tr>
            
@@ -51,7 +52,7 @@
 <td><b><a href="clear_basket.php">очистить корзину</a></b></td>
 
         <tr>
-             <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum ?></b></td>
+             <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum.'₽' ?></b></td>
          </tr> 
         <tr>
           <span><td align="left" colspan="3"><b><button type="button" class="btn btn-dark" data-bs-dismiss="modal">Продолжить просмотр</button></b></td>
@@ -95,6 +96,7 @@
 
   </footer>
   <!-- Footer Section End -->
+
   <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -104,9 +106,3 @@
 <script src="js/jquery.slicknav.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
-<!--     <script src="calendar-14/js/jquery-3.3.1.min.js"></script>
-    <script src="calendar-14/js/popper.min.js"></script>
-    <script src="calendar-14/js/bootstrap.min.js"></script>
-    <script src="calendar-14/js/rome.js"></script>
-
-    <script src="calendar-14/js/main.js"></script> -->

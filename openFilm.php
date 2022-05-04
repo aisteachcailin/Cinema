@@ -93,13 +93,24 @@
                     <form id="form1" name="form1" action="add_cart.php" method="post">
                     <table>
                         <td><p><?php
+                                $sql_fday=$link->query("SELECT * FROM `films_day`");
                                 $sql_day=$link->query("SELECT * FROM `day`");
-                                    foreach ($sql_day as $day):
-                                            if ($day['id_day'] == $flm['day'])
+                                    foreach ($sql_fday as $fday):
+                                            if ($fday['id_film'] == $flm['id'])
+                                                {
+
+                                                foreach ($sql_day as $day):
+                                                     if ($day['id_day'] == $fday['id_day'])
                                                 {
                                                     echo $day['day'];
+                                                }
+                                                endforeach; 
                                                  }
-                                    endforeach; ?></p></td>
+                                    endforeach; 
+
+                                    ?>
+                                    
+                                    </p></td>
                         <td><p><?php echo $flm['price'].'₽';?></p></td>
                         <td><p><div class="input-group quantity_flms">
                         <input type="button" value="-" id="button_minus">

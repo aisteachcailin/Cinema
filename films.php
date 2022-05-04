@@ -76,6 +76,7 @@ require('connect.php');
                                     <div class="product__item__pic set-bg"><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><img src="<?php echo $flm['imgs'];?>"></a>
                                         <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                         <div class="view"><?php echo $flm['year'];?></div>
+                                        <div class="price"><img src="images/ticket.png"><?php echo $flm['price'].'₽';?></div>
                                     </div>
                                     <div class="product__item__text">
                               <p>  <?php
