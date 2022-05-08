@@ -10,7 +10,7 @@ if(isset($_SESSION['user'])){
 			$id_film = $key;
 			$number_tickets = (int)$value;
 
-            mysqli_query($link, "INSERT INTO `reserve` (`id`, `id_user`, `id_film`, `number_tickets`) VALUES (NULL, '$id_user', '$id_film', '$number_tickets')");
+            mysqli_query($link, "INSERT INTO `reserve` (`id`, `id_user`, `id_film`, `number_tickets`, '$place', '$status', '$price', '$day', '$date_added') VALUES (NULL, '$id_user', '$id_film', '$number_tickets', '$place', '$status', '$price', '$day', NULL)");
 			}
        			       
         		header('Location: index.php?page=profile');

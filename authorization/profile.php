@@ -14,7 +14,7 @@ $id_user = $_SESSION['user']['id'];
 <section class="profile-detail">
     <form>
     <div class="container">
-        <div class="row">
+        <div class="row_profile">
             <!-- <div class="col-md-6"> -->
                 <div class="profile-detail__personal">
                     <div>
@@ -32,11 +32,11 @@ $id_user = $_SESSION['user']['id'];
                 </div>
                             
                 <div class="profile-detail__info">
-                    <div class="paid_tickets">
-                        <p>Оплаченые Билеты</p>
+                        
                     <table class="ticket-info">
+                        <p>Сведения о билетах</p>
                             <?php
-        $sql_m= $link->query("SELECT * FROM `films`");
+        $sql_sch= $link->query("SELECT * FROM `schedule`");
         $Sum = 0;
         $sql_tickets= $link->query("SELECT * FROM `tickets`");
         
@@ -45,8 +45,12 @@ $id_user = $_SESSION['user']['id'];
             if($tickets['id_user'] == $id_user){
             $a = $tickets['id_film'];
             $kol =  $tickets['number_tickets']; 
+            $pl =  $tickets['place'];
+            $st =  $tickets['status'];
+            $pr =  $tickets['price'];  
+            $d =  $tickets['day'];
             $flm_m = [];
-            foreach ($sql_m as $film_m) {
+            foreach ($sql_sch as $film_m) {
                 if($film_m['id'] == $a){
                 $flm_m= $film_m;
                 break;  
@@ -60,21 +64,24 @@ $id_user = $_SESSION['user']['id'];
                                     <em><?php echo '"'.$flm_m['name'].'"'; ?></em>
                                 </td>
                                 <td>
-                                    <?php echo $flm_m['daytime']; ?>
+                                    <?php echo $d; ?>
                                 </td>
                                 <td>
-                                   <?php echo $flm_m['daytime']; ?>
+                                   место...<?php echo $pl; ?>
                                 </td>
                                 <td>
-                                <?php echo $kol.'шт.'; ?>
+                                    <?php echo $kol.'шт.'; ?>
                                 </td>
                                 <td>
-                                <?php echo $kol*$flm_m['price'].'₽'; ?>
+                                    <?php echo $kol*$pr.'₽'; ?>
+                                </td>
+                                <td>
+                                    статус...<?php echo $st; ?>
                                 </td>
                                 <td></td>
                             </tr>
                                <?php
-        $Sum +=$kol*$flm_m['price'];
+        $Sum +=$kol*$pr;
         }   
         }        
         }
@@ -85,66 +92,6 @@ $id_user = $_SESSION['user']['id'];
                         </tbody>
                     </table>
 
-                </div>
-                            <div class="reserve_tickets">
-                        <p>Забронированные Билеты</p>
-                    <table class="ticket-info">
-                            <?php
-        $sql_m= $link->query("SELECT * FROM `films`");
-        $Sum = 0;
-        $sql_reserve= $link->query("SELECT * FROM `reserve`");
-        
-        if(isset($sql_reserve)){
-       foreach($sql_reserve as $reserve ){
-            if($reserve['id_user'] == $id_user){
-            $a = $reserve['id_film'];
-            $kol =  $reserve['number_tickets']; 
-            $flm_m = [];
-            foreach ($sql_m as $film_m) {
-                if($film_m['id'] == $a){
-                $flm_m= $film_m;
-            ?>
-                <?php break;  
-                }   
-            }
-
-            ?> 
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <em><?php echo '"'.$flm_m['name'].'"'; ?></em>
-                                </td>
-                                <td>
-                                    <?php echo $flm_m['daytime']; ?>
-                                </td>
-                                <td>
-                                   <?php echo $flm_m['daytime']; ?>
-                                </td>
-                                <td>
-                                <?php echo $kol.'шт.'; ?>
-                                </td>
-                                <td>
-                                <?php echo $kol*$flm_m['price'].'₽'; ?>
-                                </td>
-                                <td><script src="//megatimer.ru/get/ec30f003f1b6b3aed7cd53dc7ad44e1e.js"></script></td>
-                            </tr>
-                               <?php
-        $Sum +=$kol*$flm_m['price'];
-        }   
-        }        
-        }
-        ?>
-        <tr>
-             <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum.'₽' ?></b></td>
-             <td></td>
-         </tr>
-        <?php $sql_del_res= $link->query("DELETE FROM `reserve` WHERE date_added < now() - interval 60 second");
-          ?>
-                        </tbody>
-                    </table>
-
-                </div>
-           <!-- </div> -->
             </div>
 
 

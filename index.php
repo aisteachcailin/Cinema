@@ -10,7 +10,7 @@ require('connect.php');
 //подключение к бд
 
 if (!isset($_SESSION['sql'])) {
-    $_SESSION['sql'] = "SELECT * FROM `films`, `films_day`";
+    $_SESSION['sql'] = "SELECT * FROM `films`";
 }
 
 $sql_text = $_SESSION['sql'];
@@ -34,22 +34,14 @@ if (!isset($page)) {
     require('authorization/admin.php');
 } elseif ($page == 'openFilm') {
     $idf = $_GET['id'];
-    $idd = $_GET['id_day'];
     $flm = [];
-    $days = [];
     foreach ($sql as $film) {
         if($film['id'] == $idf) {
             $flm=$film;
             break;
         }
     }
-
-    foreach ($sql as $day) {
-        if($day['id_day'] == $idd) {
-            $days=$day;
-            break;
-        }
-    }
+    
     require('openFilm.php');
 
 } elseif ($page == 'film_genre') {

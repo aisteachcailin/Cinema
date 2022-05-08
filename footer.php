@@ -18,16 +18,16 @@
             </tr>
 
 <?php
-        $sql_m= $link->query("SELECT * FROM `films`");
+        $sql_sch= $link->query("SELECT * FROM `schedule`");
         $Sum = 0;
         $add_film =  $_SESSION['add_film'];
         if(isset($add_film)){
        foreach($add_film as $key => $value){
-            $a = $key;  //id товара
+            $a = $key;  //id фильма
             $kol =  $_SESSION['add_film'][$a];
             $flm_m = [];
-            foreach ($sql_m as $film_m) {
-                if($film_m['id'] == $a){
+            foreach ($sql_sch as $film_m) {
+                if($film_m['id_film'] == $a){
                 $flm_m = $film_m;
                 break;  
                 }   
@@ -36,10 +36,35 @@
 
                 <tr>
                     <td><img width="50px" src="images/ticket.png"/></td>
-                    <td><?php echo $flm_m['name']; ?></td>
-                    <td><?php echo $flm_m['daytime']; ?></td>
+                    <td><?php
+                        $sql_film=$link->query("SELECT * FROM `films`");
+                            foreach ($sql_film as $film):
+                                if ($film['id'] == $flm_m['id_film'])
+                                {
+                                echo $film['name'];
+                                }
+                            endforeach; ?>
+                    </td>
+                    <td><?php
+                        $sql_day=$link->query("SELECT * FROM `day`");
+                            foreach ($sql_day as $day):
+                                if ($day['id_day'] == $flm_m['id_day'])
+                                {
+                                echo $day['day'];
+                                }
+                            endforeach; ?>
+                    </td>
                     <td><input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="<?php echo $kol; ?>" title="Qty"></td>
-                    <td><?php echo $kol*$flm_m['price'].'₽'; ?></td>
+                    <td><?php
+                        $sql_price=$link->query("SELECT * FROM `price`");
+                            foreach ($sql_price as $price):
+                                if ($price['id_price'] == $flm_m['id_price'])
+                                {
+                                echo $kol*$price['price'].'₽';
+                                }
+                            endforeach; ?>
+                    </td>
+
                     
                 </tr>
            

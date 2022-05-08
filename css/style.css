@@ -65,7 +65,6 @@ section.profile-detail {
 }
 .profile-detail__info {
     padding-top: 50px;
-    display: inline-flex;
 }
 
 .profile-detail__personal img{
@@ -758,28 +757,12 @@ section.product.spad.film {
 	color: #49c5b6;
 }
 
-/*.descr {
-	opacity: 0;
-	color: #ffffff;
-}
-.descr:hover {
-	color: #ffffff;
-	opacity: 1;
-	transition: 1s;
-	display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}*/
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
 }
 
-/*.filter__gallery:hover {
-	transition: 1s;
-	opacity: 0.2;
-}*/
 .film_info {
     display: flex;
 }
@@ -867,7 +850,7 @@ section.product.spad.film {
 	top: 10px;
 }
 
-.price {
+/*.price {
 	font-size: 13px;
 	color: #ffffff;
 	background: #19bfb7;
@@ -882,9 +865,7 @@ section.product.spad.film {
 .price:hover{
 	width: 70px;
 	height: 25px;
-
-	64.04 23.5
-}
+}*/
 .product__sidebar__view__item h5 {
 	position: absolute;
 	left: 0;
@@ -1093,6 +1074,21 @@ section.product.spad.film {
 	margin-left: 20px;
 }
 
+.look_all a {
+	font-family: "Mulish", sans-serif;
+	color: #a4a4a4;
+	margin-left: 310px;
+	text-transform: lowercase;
+	letter-spacing: 1px;
+}
+
+.look_all a:hover {
+	color: #19bfb7;
+}
+
+.look_all img {
+	padding-right: 5px;
+}
 /*---------------------
   Anime Details
 -----------------------*/
@@ -1476,12 +1472,6 @@ form td {
 	content: "";
 	font-family: "FontAwesome";
 }
-
-/*.breadcrumb__links span {
-	font-size: 15px;
-	color: #b7b7b7;
-	display: inline-block;
-}*/
 
 /*---------------------
     Normal Breadcrumb
@@ -2216,6 +2206,15 @@ input.add_to_cart {
 	.blog__item__text {
 		padding: 0 50px;
 	}
+
+	/*new*/
+	.product__sidebar {
+    width: 80%;
+    padding-left: 5vh;
+	}	
+	.product__item__pic.set-bg {
+    padding: 2vh;
+	}
 }
 
 /* Tablet Device = 768px */
@@ -2224,8 +2223,12 @@ input.add_to_cart {
 	.hero {
 		overflow: hidden;
 	}
+
+/*	.col-lg-2, .col-lg-8{
+		display: none;
+	}*/
 	.header {
-		position: relative;
+		position: absolute;
 	}
 	.header .container {
 		position: relative;
@@ -2327,6 +2330,9 @@ input.add_to_cart {
 /* Wide Mobile = 480px */
 
 @media only screen and (max-width: 767px) {
+	.header {
+		max-height: 200vh;
+	}
 	.hero {
 		overflow: hidden;
 	}

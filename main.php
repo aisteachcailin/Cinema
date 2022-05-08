@@ -100,7 +100,6 @@ $sql=$link->query("SELECT * FROM `films`");
                                     <div class="product__item__pic set-bg"><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><img src="<?php echo $flm['imgs'];?>"></a>
                                         <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                         <div class="view"><?php echo $flm['year'];?></div>
-                                        <div class="price"><img src="images/ticket.png"><?php echo $flm['price'].'₽';?></div>
                                     </div>
                                     <div class="product__item__text">
                                 <p>  <?php
@@ -121,6 +120,7 @@ $sql=$link->query("SELECT * FROM `films`");
                             </div>
 
                                     <?php endforeach;?>
+                                    <div class="look_all"><a href="index.php?page=films"><img src="images/lookall.png" alt="">Посмотреть все</a></div>
     </div>
 
 </div>
@@ -153,7 +153,6 @@ $sql=$link->query("SELECT * FROM `films`");
                                 <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                 <div class="view"><?php echo $flm['year'];?></div>
                                 <h5><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><?php echo $flm['name'];?></a></h5>
-                                <!-- <div class="descr"><?php echo $flm['descr'];?></div> -->
                             </div>
                         </div>
                         <?php endforeach;?>

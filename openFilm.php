@@ -87,31 +87,41 @@
                     </div>
                     <div class="schedule">
                     <div class="section-title">
-                                <h4>Расписание</h4>
+                                <h4>Сеансы</h4>
                     </div>
                     <hr>
                     <form id="form1" name="form1" action="add_cart.php" method="post">
                     <table>
-                        <td><p><?php
-                                $sql_fday=$link->query("SELECT * FROM `films_day`");
+                        <?php
+                                $sql_sch=$link->query("SELECT * FROM `schedule`");
+                                     foreach ($sql_sch as $sch):
+                                       if ($sch['id_film'] == $flm['id'])
+                                            {
+                        ?>
+                        <tr><td><?php
                                 $sql_day=$link->query("SELECT * FROM `day`");
-                                    foreach ($sql_fday as $fday):
-                                            if ($fday['id_film'] == $flm['id'])
-                                                {
-
                                                 foreach ($sql_day as $day):
-                                                     if ($day['id_day'] == $fday['id_day'])
+                                                     if ($day['id_day'] == $sch['id_day'])
                                                 {
                                                     echo $day['day'];
-                                                }
-                                                endforeach; 
+                                                    
                                                  }
-                                    endforeach; 
 
-                                    ?>
-                                    
-                                    </p></td>
-                        <td><p><?php echo $flm['price'].'₽';?></p></td>
+                                                endforeach;?> 
+                        </td>
+                        <td><?php
+                                $sql_pr=$link->query("SELECT * FROM `price`");
+                                                
+
+                                                foreach ($sql_pr as $pr):
+                                                     if ($pr['id_price'] == $sch['id_price'])
+                                                {
+                                                    echo $pr['price'].'₽';
+                                                    
+                                                 }
+
+                                                endforeach; ?>
+                        </td>
                         <td><p><div class="input-group quantity_flms">
                         <input type="button" value="-" id="button_minus">
                         <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Qty" >
@@ -119,9 +129,15 @@
                               </div>
                         <!-- начало невидимой части формы -->
                         <input type="hidden"  name="film_id" value="<?php echo $flm['id']?>" />
-                        <!-- конец невидимой части формы --></p></td>
+                        <!-- конец невидимой части формы --></p>
+                        </td>
                         <td><p>
-                            <input class='add_to_cart' type="submit" value="В корзину" name="submit"></p></td>
+                            <input class='add_to_cart' type="submit" value="В корзину" name="submit">
+                        </p></td></tr><?php
+                                           } 
+                                     endforeach; 
+                                                
+                                    ?>
                     </table>
                     <hr>
                       </form>
@@ -142,8 +158,8 @@
                             </div>
                                    <?php
         $i=0;
+        $sql=$link->query("SELECT * FROM `films`");
          foreach ($sql as $flm): 
-            $sql=$link->query("SELECT * FROM `films` ORDER BY `rating` DESC");
             $i++;
             if ($i > 3) {
                 break;
@@ -155,7 +171,6 @@
                                 <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                 <div class="view"><?php echo $flm['year'];?></div>
                                 <h5><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><?php echo $flm['name'];?></a></h5>
-                                <!-- <div class="descr"><?php echo $flm['descr'];?></div> -->
                             </div>
                         </div>
                         <?php endforeach;?>
