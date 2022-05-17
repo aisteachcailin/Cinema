@@ -16,6 +16,7 @@ session_start();
             "id" => $user['id'],
             "full_name" => $user['full_name'],
             "avatar" => $user['avatar'],
+            "login" => $user['login'],
             "email" => $user['email'],
             "role" => $user['role']
         ];

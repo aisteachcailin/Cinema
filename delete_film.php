@@ -1,20 +1,11 @@
 <?php
-if(isset($_POST["id"]))
-{
-    $conn = mysqli_connect("localhost", "root", "", "cinema");
-    if (!$conn) {
-      die("Ошибка: " . mysqli_connect_error());
-    }
-    $userid = mysqli_real_escape_string($conn, $_POST["id"]);
-    $sql = "DELETE FROM films WHERE id = '$userid'";
-    if(mysqli_query($conn, $sql)){
-         
-        header("Location: index.php");
-    } else{
-        echo "Ошибка: " . mysqli_error($conn);
-    }
-    mysqli_close($conn);    
-}
+session_start();
+    require_once 'connect.php';
 
-header("Location: index.php?page=admin");
-?>
+    $id = $_POST['id'];
+
+    $del=$link->query($link,"DELETE FROM `films` WHERE `films`.`id` = '$id'");
+    header('Location: index.php?page=admin');
+ ?>
+
+

@@ -1,7 +1,8 @@
 <?php
-if ($_SESSION['user']) {
-    header('Location: index.php?page=profile');
-}
+if ($_SESSION['user']['role'] == 1) {
+    header('Location: index.php?page=admin');}
+if ($_SESSION['user']['role'] == 2) {
+    header('Location: index.php?page=profile');}
 ?>
 
 <!DOCTYPE html>

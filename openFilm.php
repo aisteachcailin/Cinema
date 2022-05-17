@@ -25,24 +25,25 @@
         </div>
     </div>
     
-    <section class="anime-details spad">
+    <section class="film-details spad">
         <div class="container">
-            <div class="anime__details__content">
+            <div class="film__details__content">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="anime__details__pic set-bg"><img src="<?php echo $flm['imgs'];?>" width="100%"/>
+                        <div class="film__details__pic set-bg"><img src="<?php echo $flm['imgs'];?>" width="100%"/>
                         </div>                    
                     </div>
                     <div class="col-lg-9">
-                        <div class="anime__details__text">
-                            <div class="anime__details__title">
-                                <h3><?php echo $flm['name'];?></h3>
+                        <div class="film__details__text">
+                            <div class="film__details__title">
+                                <h3><?php echo $flm['name'];?>
+                                </h3>
                             </div>
-                            <div class="anime__details__rating">
+                            <div class="film__details__rating">
                                    <p>Рейтинг</p> <div class="ep"><?php echo $flm['rating']."/10";?></div>  
                             </div>
                             <p><?php echo $flm['descr'];?></p>
-                            <div class="anime__details__widget">
+                            <div class="film__details__widget">
                                 <div class="row">
                                         <div class="film_info">
                                         <div class="first_info" style="width: 85%;">
@@ -60,7 +61,7 @@
                                             <li><span>Страна:</span><?php echo $flm['country'];?></li>
                                         </ul></div>
                                        <div class="second_info"> <ul>
-                                            <li><span>Длительность:</span><?php echo $flm['lasting']." мин.";?></li>
+                                            <li><span>Длительность:</span><?php echo $flm['lasting'];?></li>
                                             <li><span>Главные герои:</span><?php echo $flm['main_roles'];?></li>
                                         </ul></div>
                                     </div>
@@ -76,7 +77,7 @@
                 <div class="col-lg-8">
                     <div class="trending__product">
                         <div class="row">
-                    <div class="anime__video__player">
+                    <div class="video__player">
                     <div class="section-title">
                                 <h4>Трейлер</h4>
                             </div>
@@ -88,17 +89,18 @@
                     <div class="schedule">
                     <div class="section-title">
                                 <h4>Сеансы</h4>
+                     <div class="openFilm_price"><img src="images/ticket.png"><?php echo $flm['price'].'₽';?></div>
                     </div>
                     <hr>
-                    <form id="form1" name="form1" action="add_cart.php" method="post">
-                    <table>
+                                        <form id="form1" name="form1" action="add_cart.php" method="post">
+                    <table><tr>
                         <?php
                                 $sql_sch=$link->query("SELECT * FROM `schedule`");
                                      foreach ($sql_sch as $sch):
                                        if ($sch['id_film'] == $flm['id'])
                                             {
                         ?>
-                        <tr><td><?php
+                        <td><div class="day"><a href="index.php?page=scheme&id_film=<?php echo $sch['id_film']; ?>&id_day=<?php echo $sch['id_day']; ?>"><?php
                                 $sql_day=$link->query("SELECT * FROM `day`");
                                                 foreach ($sql_day as $day):
                                                      if ($day['id_day'] == $sch['id_day'])
@@ -108,39 +110,12 @@
                                                  }
 
                                                 endforeach;?> 
-                        </td>
-                        <td><?php
-                                $sql_pr=$link->query("SELECT * FROM `price`");
-                                                
-
-                                                foreach ($sql_pr as $pr):
-                                                     if ($pr['id_price'] == $sch['id_price'])
-                                                {
-                                                    echo $pr['price'].'₽';
-                                                    
-                                                 }
-
-                                                endforeach; ?>
-                        </td>
-                        <td><p><div class="input-group quantity_flms">
-                        <input type="button" value="-" id="button_minus">
-                        <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Qty" >
-                        <input type="button" value="+" id="button_plus">
-                              </div>
-                        <!-- начало невидимой части формы -->
-                        <input type="hidden"  name="film_id" value="<?php echo $flm['id']?>" />
-                        <!-- конец невидимой части формы --></p>
-                        </td>
-                        <td><p>
-                            <input class='add_to_cart' type="submit" value="В корзину" name="submit">
-                        </p></td></tr><?php
-                                           } 
-                                     endforeach; 
-                                                
-                                    ?>
-                    </table>
-                    <hr>
+                                                </a>
+                        </div></td>
+                                <?php } endforeach; ?>
+                   </tr></table>
                       </form>
+                    <hr>
                     </div>
                     <div class="facts">
                     <div class="section-title">
@@ -166,7 +141,7 @@
             }
                 ?>
                             <div class="filter__gallery">
-                                <div class="product__sidebar__view__item set-bg mix day years"
+                                <div class="product__sidebar__view__item set-bg"
                                 data-setbg="<?php echo $flm['imgs'];?>">
                                 <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                 <div class="view"><?php echo $flm['year'];?></div>

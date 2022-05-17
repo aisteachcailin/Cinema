@@ -1,95 +1,5 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <link rel="stylesheet" href="css/basket.css" type="text/css">
-<!--Модальное окно-->
-<div class="modal fade" id="tickets" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Билеты</h3>
-    </div>
-    <div class="modal-body">
-        <table>
-            <tr>
-                <td></td>
-                <td><b>Фильм</b></td>
-                <td><b>Дата и время</b></td>
-                <td><b>Количество</b></td>
-                <td><b>Цена</b></td>
-            </tr>
-
-<?php
-        $sql_sch= $link->query("SELECT * FROM `schedule`");
-        $Sum = 0;
-        $add_film =  $_SESSION['add_film'];
-        if(isset($add_film)){
-       foreach($add_film as $key => $value){
-            $a = $key;  //id фильма
-            $kol =  $_SESSION['add_film'][$a];
-            $flm_m = [];
-            foreach ($sql_sch as $film_m) {
-                if($film_m['id_film'] == $a){
-                $flm_m = $film_m;
-                break;  
-                }   
-            }
-            ?> 
-
-                <tr>
-                    <td><img width="50px" src="images/ticket.png"/></td>
-                    <td><?php
-                        $sql_film=$link->query("SELECT * FROM `films`");
-                            foreach ($sql_film as $film):
-                                if ($film['id'] == $flm_m['id_film'])
-                                {
-                                echo $film['name'];
-                                }
-                            endforeach; ?>
-                    </td>
-                    <td><?php
-                        $sql_day=$link->query("SELECT * FROM `day`");
-                            foreach ($sql_day as $day):
-                                if ($day['id_day'] == $flm_m['id_day'])
-                                {
-                                echo $day['day'];
-                                }
-                            endforeach; ?>
-                    </td>
-                    <td><input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="<?php echo $kol; ?>" title="Qty"></td>
-                    <td><?php
-                        $sql_price=$link->query("SELECT * FROM `price`");
-                            foreach ($sql_price as $price):
-                                if ($price['id_price'] == $flm_m['id_price'])
-                                {
-                                echo $kol*$price['price'].'₽';
-                                }
-                            endforeach; ?>
-                    </td>
-
-                    
-                </tr>
-           
-        <?php
-        $Sum +=$kol*$flm_m['price'];
-        }   
-        }        
-
-        ?>
-<td><b><a href="clear_basket.php">очистить корзину</a></b></td>
-
-        <tr>
-             <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum.'₽' ?></b></td>
-         </tr> 
-        <tr>
-          <span><td align="left" colspan="3"><b><button type="button" class="btn btn-dark" data-bs-dismiss="modal">Продолжить просмотр</button></b></td>
-          <td><a href="reserve_tickets.php"><button type="button" class="btn btn-dark">Забронировать билеты</button></td>
-          <td align="right" colspan="4"><b><a href="pay_tickets.php"><button type="button" class="btn btn-light" >Оплатить билеты</button></a></b></td></span>
-        </tr>         
-                  
-        </table>
-          </div>
-        </div>
-      </div>
-      </div>
 
 <footer class="footer">
     <div class="page-up">
@@ -121,7 +31,6 @@
 
   </footer>
   <!-- Footer Section End -->
-
   <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

@@ -1,0 +1,40 @@
+
+.scheme {
+	padding-bottom: 40vh;
+	padding-top: 30vh;
+	text-align: center;
+	padding-left: 40vh;
+	padding-right: 40vh;
+}
+
+.place {
+	background-color: #19bfb9;
+	border-radius: 100%;
+    border: none;
+    height: 5vh;
+    width: 5vh;
+    margin: 3px;
+}
+.place:hover {
+	border-color: #001716;
+    border-style: solid;
+    transition: 0.3s;
+}
+.places {
+	text-align: center;
+	padding: 5vh;
+}
+
+.number_place {
+	opacity: 0;
+	font-size: 12px;
+	padding-right: 4px;
+	text-align: center;
+	font-family: "Mulish", sans-serif;
+	font-weight: bold;
+}
+
+.number_place:hover {
+	opacity: 1;
+	transition: 0.3s;
+}

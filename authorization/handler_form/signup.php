@@ -5,6 +5,7 @@
     $full_name = $_POST['full_name'];
     $login = $_POST['login'];
     $email = $_POST['email'];
+/*    $avatar = $_POST['avatar'];*/
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
 
@@ -20,15 +21,16 @@
 
     if ($password === $password_confirm) {
 
-        $path = 'uploads/' . time() . $_FILES['avatar']['name'];
+    $path = 'uploads/' . time() . $_FILES['avatar']['name'];
         if (!move_uploaded_file($_FILES['avatar']['tmp_name'], '../' . $path)) {
             $_SESSION['message'] = 'Ошибка при загрузке сообщения';
             header('Location: index.php?page=register');
+
         }
 
         $password = md5($password);
 
-        mysqli_query($link, "INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `password`, `avatar`) VALUES (NULL, '$full_name', '$login', '$email', '$password', '$path')");
+        mysqli_query($link, "INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `password`, `avatar`, `role`) VALUES (NULL, '$full_name', '$login', '$email', '$password', '$path', `2`)");
 
         $_SESSION['message'] = 'Регистрация прошла успешно!';
         header('Location: ../../index.php?page=profile');

@@ -44,6 +44,9 @@ if (!isset($page)) {
     
     require('openFilm.php');
 
+} elseif ($page == 'scheme') {
+    require('scheme/scheme.php');
+
 } elseif ($page == 'film_genre') {
         $idf=$_GET['id_genre'];
         if ($idf == 0) {
@@ -64,9 +67,18 @@ if (!isset($page)) {
         $sql = $link->query($sql_text);
         require('films.php');
 
-} 
+} elseif ($page == 'film_day') {
+        $day=$_GET['day'];
+        if ($day == 0) {
+            $_SESSION['sql'] = "SELECT * FROM `day`";
+        } else {
+            $_SESSION['sql'] = "SELECT * FROM `day` WHERE `day` = $day";}
+        $sql_text = $_SESSION['sql'];
+        $sql = $link->query($sql_text);
+        require('films.php');        
+
 //сортировка
-elseif ($page == 'sort') {
+} elseif ($page == 'sort') {
         $idf=$_GET['id_sort'];
        if ($idf == 1) {
         $sql_text.= " ORDER BY `name`";
@@ -80,12 +92,9 @@ elseif ($page == 'sort') {
        if ($idf == 4) {
         $sql_text.= " ORDER BY `price` DESC";
        }
-       if ($idf == 5) {
-        $sql_text.= " ORDER BY `day` ASC";
-       }
-       if ($idf == 6) {
-        $sql_text.= " ORDER BY `day` DESC";
-       }
+/*       if ($idf == 5) {
+        $sql_text.= " WHERE `day` = $idf";
+       }*/
 
     $sql = $link->query($sql_text);
     require ('films.php');

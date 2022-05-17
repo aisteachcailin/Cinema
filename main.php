@@ -30,7 +30,7 @@
     </div>
 
     <!-- Hero Section Begin -->
-    <section class="hero">
+    <section class="carousel_films">
         <div class="container">
             <div class="hero__slider owl-carousel">
                 <div class="hero__items set-bg" data-setbg="images/titan.jpg">
@@ -132,12 +132,6 @@ $sql=$link->query("SELECT * FROM `films`");
                             <div class="section-title">
                                 <h5>Самый высокий рейтинг</h5>
                             </div>
-                            <ul class="filter__controls">
-                                <li class="active" data-filter="*">День</li>
-                                <li data-filter=".week">Неделя</li>
-                                <li data-filter=".month">Месяц</li>
-                                <li data-filter=".years">Год</li>
-                            </ul>
                                    <?php
         $i=0;
          foreach ($sql as $flm): 

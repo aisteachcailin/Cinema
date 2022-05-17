@@ -44,12 +44,24 @@ require('connect.php');
                                     </div>
                     <div class="sort">
                         <div class="sort_text"><i class="fal fa-sort-alt"></i>Сортировать:</div>
-                        <forma action="">
-                    <select class="selecter" onchange="location=value">
+                        <forma action="" method="get">
+<!--                  <select class="selecter" onchange="location=value">
                         <option value="" selected="selected">По дате</option>
                         <option value="index.php?page=sort&id_sort=6">Самые новые</option>
                         <option value="index.php?page=sort&id_sort=5">Самые старые</option>
-                    </select>
+                    </select> -->
+
+                  <div class="form-group">
+                    <input type="date" value="" name="datepicker" id="datepicker" class="form-control">
+                    <?php
+                        
+
+
+                    ?>
+                   <!--  <input type="submit" action="index.php?page=film_day"> -->
+
+                  </div>
+
                     <select class="selecter" onchange="location=value">
                         <option value="" selected="selected">По названию</option>
                         <option value="index.php?page=sort&id_sort=1">А-Я</option>
@@ -76,7 +88,7 @@ require('connect.php');
                                     <div class="product__item__pic set-bg"><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><img src="<?php echo $flm['imgs'];?>"></a>
                                         <div class="ep"><?php echo $flm['rating']."/10";?></div>
                                         <div class="view"><?php echo $flm['year'];?></div>
-                                        <!-- <div class="price"><img src="images/ticket.png"><?php echo $flm['price'].'₽';?></div> -->
+                                        <div class="price"><img src="images/ticket.png"><?php echo $flm['price'].'₽';?></div>
                                     </div>
                                     <div class="product__item__text">
                               <p>  <?php
