@@ -67,7 +67,7 @@ if (!isset($page)) {
         $sql = $link->query($sql_text);
         require('films.php');
 
-} elseif ($page == 'film_day') {
+/*} elseif ($page == 'film_day') {
         $day=$_GET['day'];
         if ($day == 0) {
             $_SESSION['sql'] = "SELECT * FROM `day`";
@@ -75,7 +75,7 @@ if (!isset($page)) {
             $_SESSION['sql'] = "SELECT * FROM `day` WHERE `day` = $day";}
         $sql_text = $_SESSION['sql'];
         $sql = $link->query($sql_text);
-        require('films.php');        
+        require('films.php');        */
 
 //сортировка
 } elseif ($page == 'sort') {
@@ -98,7 +98,31 @@ if (!isset($page)) {
 
     $sql = $link->query($sql_text);
     require ('films.php');
+ 
+
+
+ //поиск по дате и времени
+    
+} elseif ($page == 'date_to') {
+
+if (isset($_SESSION['date_to'])) {
+
+$date_to = $_SESSION['date_to'];
+$d1 = strtotime($date_to); // переводит из строки в дату
+$date_to2 = date("Y-m-d", $d1);
+$sql_date_to2 = "SELECT `id_day` FROM `day` WHERE `day` >= '$date_to2'";
+/*$sss = $_SESSION['sql_date_to'];
+$sql_date_to2=$link -> query($sss);*/
+$id_film = "SELECT `id_film` FROM `schedule` WHERE `id_day` = '$sql_date_to2'";
+$film = "SELECT * FROM `films` WHERE `id` = '$id_film'";
+var_dump($sql_date_to2); 
+
+    $sql = $link -> query($film);
+    unset($_SESSION['date_to']);
 }
+require('films.php');    
+}   
+
 ?>   
 </div>
 

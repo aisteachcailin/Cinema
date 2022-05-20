@@ -16,8 +16,7 @@
       $sql_place=$link->query("SELECT * FROM `place`");
 			foreach ($sql_place as $place): ?> 
 
-<button onclick="style.backgroundColor='#ff5722'" class="place" id="btl_pl"><div class="number_place"><?php echo $place['id_place'];?></div></button>
-
+<button onclick="style.backgroundColor='#ff5722'" class="place" id="btl_pl"><div class="number_place"><?php echo $place['place'];?></div></button>
 			<?php endforeach; ?>
 
 </div>
@@ -26,7 +25,7 @@
  
 		<a href="reserve_tickets.php"><button type="submit" class="btn btn-dark">Забронировать билеты</button>
       <a href="pay_tickets.php"><button type="button" class="btn btn-light" >Оплатить билеты</button></a>
-
+<!-- 
 <script>
     var numCount = document.getElementById('num_count');
     var plusBtn = document.getElementById('button_plus');
@@ -43,7 +42,7 @@
         }
         numCount.value = qty;
     }
-</script>
+</script> -->
 
 </body>
 </html>

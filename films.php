@@ -51,17 +51,6 @@ require('connect.php');
                         <option value="index.php?page=sort&id_sort=5">Самые старые</option>
                     </select> -->
 
-                  <div class="form-group">
-                    <input type="date" value="" name="datepicker" id="datepicker" class="form-control">
-                    <?php
-                        
-
-
-                    ?>
-                   <!--  <input type="submit" action="index.php?page=film_day"> -->
-
-                  </div>
-
                     <select class="selecter" onchange="location=value">
                         <option value="" selected="selected">По названию</option>
                         <option value="index.php?page=sort&id_sort=1">А-Я</option>
@@ -75,6 +64,12 @@ require('connect.php');
                     </forma>
 
                     </div>
+                    <form name="date_to" method="post" action="date.php">
+                      <div class="form-group">
+                        <input type="date" name="date_to" id="datepicker" class="form-control">
+                        <button type="submit" id="btncheck"><img src="images/check.png" width="20vh">
+                      </div>
+                    </form>
                             </div>
                             </div>
                         </div>

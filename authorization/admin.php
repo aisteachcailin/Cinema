@@ -13,7 +13,6 @@ session_start();
         <div class="row_profile">
             <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
                 <div class="profile-detail__personal">
-                    
                     <div>
                         <img src="authorization/avatars/default.png" width="200vh" height="200vh" alt="">
                     </div>
@@ -28,10 +27,14 @@ session_start();
                         <div>
                         <button type="submit" id="btncheck"><img width="25vh" id="check_profile" src="images/check.png"></button>
                         </div> 
+                        <div>
+                            <div class="logout"><a href="authorization/handler_form/logout.php" class="logout">Выход</a></div>
+                        </div>
                        </div>  
                 </div>
             </form>
             <div class="info_for_admin">
+            <div class="cards">
            <div class="card">
                   <div class="card-body">
                     <div class="section-title">
@@ -73,6 +76,27 @@ session_start();
                     </div>
                   </div>
 
+<!--                 <div class="card">
+                  <div class="card-body">
+                    <div class="section-title">
+                        <h4>Пользователи</h4>
+                    </div>
+                      <table class="table">
+                        <tbody>
+                            <?php 
+                            $sql_users=$link->query("SELECT * FROM `users`");
+                                foreach ($sql_users as $u): ?>
+                        <tr>
+                            <td><?php echo $u['avatar'];?></td>
+                            <td><?php echo $u['full_name'];?></td>
+                            <td><?php echo $u['email'];?></td>
+                        </tr>
+                            <?php endforeach;?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div> -->
+</div>
         <div class="films">
             <div class="section-title">
               <h4>Фильмы</h4>
@@ -122,7 +146,6 @@ session_start();
 </div>
                 </div>
               </div>
-            <div class="logout"><button class="site-btn"><a href="authorization/handler_form/logout.php" class="logout">Выход</a></button></div>
 </section>
 
 </body>

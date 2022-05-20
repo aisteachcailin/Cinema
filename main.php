@@ -90,10 +90,8 @@
                         </div>
 
                         <div class="row">
-         <?php
-$sql=$link->query("SELECT * FROM `films`");
-         foreach ($sql as $flm): 
-            ?>
+                        <?php $sql=$link->query("SELECT * FROM `films`");
+                          foreach ($sql as $flm): ?>
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
@@ -121,7 +119,7 @@ $sql=$link->query("SELECT * FROM `films`");
 
                                     <?php endforeach;?>
                                     <div class="look_all"><a href="index.php?page=films"><img src="images/lookall.png" alt="">Посмотреть все</a></div>
-    </div>
+                        </div>
 
 </div>
 </div>
@@ -157,6 +155,3 @@ $sql=$link->query("SELECT * FROM `films`");
         </div>
     </div>
      </section>
-</body>
-
-</html>

@@ -92,7 +92,7 @@
                      <div class="openFilm_price"><img src="images/ticket.png"><?php echo $flm['price'].'₽';?></div>
                     </div>
                     <hr>
-                                        <form id="form1" name="form1" action="add_cart.php" method="post">
+                                        <!-- <form id="form1" name="form1" action="add_cart.php" method="post"> -->
                     <table><tr>
                         <?php
                                 $sql_sch=$link->query("SELECT * FROM `schedule`");
@@ -114,7 +114,7 @@
                         </div></td>
                                 <?php } endforeach; ?>
                    </tr></table>
-                      </form>
+                    <!--   </form> -->
                     <hr>
                     </div>
                     <div class="facts">

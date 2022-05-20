@@ -95,6 +95,11 @@ input#date, input#nameses {
     margin-left: 10vh;
     height: fit-content;
 }
+.card_profile {
+    border: none;
+    width: fit-content;
+    height: fit-content;
+}
 .table thead th {
     color: #13928c;
     letter-spacing: 1px;
@@ -103,7 +108,45 @@ input#date, input#nameses {
 .table tr {
 	padding-top: 5vh;
 }
+img#img_ticket {
+    width: 25vh;
+}
 
+.empty {
+	font-family: "Mulish", sans-serif;
+	font-size: 30px;
+	color: #a4a4a4;
+	display: grid;
+	margin-left: 15vh;
+	margin-top: 7vh;
+}
+.middle {
+	display: flex;
+	padding-top: 10vh;	
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+img#empty {
+    margin-left: 18vh;
+}
+
+.film_ticket {
+	font-family: "Mulish", sans-serif;
+	font-size: 35px;
+	color: #fff;
+}
+
+.day_ticket, .place_ticket, .row_ticket, .kol_ticket, .price_ticket, .status_ticket {
+	font-family: "Mulish", sans-serif;
+	font-size: 18px;
+	color: #fff;
+}
+.day_ticket span, .place_ticket span, .row_ticket span, .kol_ticket span, .price_ticket span, .status_ticket span{
+	font-size: 16px;
+	color: #a4a4a4;
+	padding-right: 5px;
+}
 .film_rating .ep {
 	font-size: 13px;
 	color: #ffffff;
@@ -208,19 +251,16 @@ padding-top: 45px;
 	text-align: center;
 }
 
-.logout .site-btn {
-	color: #fff;
-	background: #13928c;
-    font-weight: bold;
+a.logout {
+	color: #a4a4a4;
     font-size: 15px;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-left: 200px;
+    text-transform: lowercase;
 }
-.logout {
-	margin-top: 150px;
+a.logout:hover {
+	color: #28e3da;
+}
 
-}
 
 img {
 	color: #fff;
@@ -1382,6 +1422,7 @@ form td {
 	background: #ffffff;
 	border: none;
 	padding-left: 76px;
+	color: #000;
 }
 
 .login__form form .input__item input::-webkit-input-placeholder {
@@ -1819,9 +1860,9 @@ form td {
 	.header {
 		width: 500px;
 	}
-/*	.header .container {
+	.header .container {
 		position: relative;
-	}*/
+	}
 	.header__right {
 		position: absolute;
 		left: 600px;

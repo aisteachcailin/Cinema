@@ -11,53 +11,63 @@ $id_user = $_SESSION['user']['id'];
 </head>
 <body>
 
-<div class="modal fade" id="correct_profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Редактирование профиля</h3>
-    </div>
-    <div class="modal-body">
-        <form action="authorization/handler_form/correct.php" method="post" enctype="multipart/form-data">
-        <div class="input__item">
-            <input type="text" name="full_name" value="<?php echo $_SESSION['user']['full_name'] ?>" placeholder="ФИО">
-            <span class="icon_profile"></span>
-            
-        </div>
-        <div class="input__item">
-            <input type="file" name="avatar" value="<?php echo $_SESSION['user']['avatar'] ?>">
-            <span class="icon_image"></span>
-        </div>
-        <button type="submit" class="btn btn-dark" data-bs-dismiss="modal">Сохранить изменения</button>
-        </form>
-        </div>
-          </div>
-        </div>
-      </div>
-
 <section class="profile-detail">
-    <form>
     <div class="container">
         <div class="row_profile">
+            <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
                 <div class="profile-detail__personal">
                     <div>
                         <img src="authorization/avatars/default.png" width="200vh" height="200vh" alt="">
                     </div>
-                        <div class="profile-text">
+                       <div class="profile-text">
                         <div class="profile-title">
-                            <h2><?= $_SESSION['user']['full_name'] ?></h2>
+                            <h2><input type="text" name="full_name" value="<?php echo $_SESSION['user']['full_name'] ?>"></h2>
                         </div>
                         <div class="profile-email">
                             <i class="fa fa-envelope"></i>
                             <a href="#"><?= $_SESSION['user']['email'] ?></a>
                         </div>
-                        <img width="25vh" src="images/edit.png" id="edit" data-bs-toggle="modal" data-bs-target="#correct_profile" alt="">
+                        <div>
+                        <button type="submit" id="btncheck"><img width="25vh" id="check_profile" src="images/check.png"></button>
+                        </div> 
+                        <div>
+                            <div class="logout"><a href="authorization/handler_form/logout.php" class="logout">Выход</a></div>
                         </div>
+                       </div>  
                 </div>
-                <div class="profile-detail__info">
-                    <div class="paid_tickets">
-                        <p>Оплаченые Билеты</p>
-                    <table class="ticket-info">
+                </form>
+<div class="middle">
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="product__sidebar">
+                        <div class="product__sidebar__view">
+                            <div class="section-title">
+                                <h4>Рекомендации</h4>
+                            </div>
+                                   <?php
+        $i=0;
+        $sql=$link->query("SELECT * FROM `films`");
+         foreach ($sql as $flm): 
+            $i++;
+            if ($i > 3) {
+                break;
+            }
+                ?>
+                            <div class="filter__gallery">
+                                <div class="product__sidebar__view__item set-bg"
+                                data-setbg="<?php echo $flm['imgs'];?>">
+                                <div class="ep"><?php echo $flm['rating']."/10";?></div>
+                                <div class="view"><?php echo $flm['year'];?></div>
+                                <h5><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><?php echo $flm['name'];?></a></h5>
+                            </div>
+                        </div>
+                        <?php endforeach;?>
+                    </div>
+                </div>
+            </div>
+           <div class="card_profile">
+                  <div class="card-body">
+                      <table class="table">
+                        <tbody>
                             <?php
         $sql_m= $link->query("SELECT * FROM `films`");
         $Sum = 0;
@@ -73,107 +83,55 @@ $id_user = $_SESSION['user']['id'];
                 if($film_m['id'] == $a){
                 $flm_m= $film_m;
                 break;  
-                }   
+                }  
             }
 
-            ?> 
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <em><?php echo '"'.$flm_m['name'].'"'; ?></em>
-                                </td>
-                                <td>
-                                    <?php echo $flm_m['daytime']; ?>
-                                </td>
-                                <td>
-                                   <?php echo $flm_m['daytime']; ?>
-                                </td>
-                                <td>
-                                <?php echo $kol.'шт.'; ?>
-                                </td>
-                                <td>
-                                <?php echo $kol*$flm_m['price'].'₽'; ?>
-                                </td>
-                                <td></td>
-                            </tr>
-                               <?php
-        $Sum +=$kol*$flm_m['price'];
-        }   
-        }        
-        }
-        ?>
-        <tr>
-             <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum.'₽' ?></b></td>
-         </tr>
+            ?>    
+                        <tr>                  <div class="section-title">
+                        <h4>Билеты</h4>
+                    </div>
+                            <td><img id="img_ticket" src="<?php echo $flm_m['imgs'];?>"></td>
+                            <td><div class="film_ticket"><?php echo $flm_m['name']; ?></div>
+                                <div class="day_ticket"><span>Дата и время сеанса:</span><?php $sql_sch= $link->query("SELECT * FROM `schedule`");
+                                      $sql_day= $link->query("SELECT * FROM `day`");
+                                foreach($sql_sch as $sch):
+                                    if ($sch['id_film'] == $flm_m['id']) {
+                                        foreach($sql_day as $day):
+                                    if ($sch['id_day'] == $day['id_day']) {
+                                        echo $day['day'];
+                                    }
+                                endforeach;
+                                    }
+                                endforeach;
+                        ?></div>
+                                <div class="place_ticket"><span>Место:</span></div>
+                                <div class="row_ticket"><span>Ряд:</span></div>
+                                <div class="kol_ticket"><span>Количество билетов:</span><?php echo $kol.'шт.'; ?></div>
+                                <div class="price_ticket"><span>Стоимость:</span><?php echo $kol*$flm_m['price'].'₽'; ?></div>
+                                <div class="status_ticket"><span>Статус:</span></div>
+                            </td>
+                        </tr>
+                    <?php $Sum +=$kol*$flm_m['price'];
+                    }   
+                    }?>   
+
+                    <div class="empty"><?php
+                        if ($kol == 0) {
+                            echo 'У вас пока нет билетов';?>
+                            <img id="empty" src="images/empty.png" alt=""><?php  
+                        }  
+                    ?>
+                    </div>
+
+                    <?php }
+                    ?>
                         </tbody>
-                    </table>
-
-                </div>
-                            <div class="reserve_tickets">
-                        <p>Забронированные Билеты</p>
-                    <table class="ticket-info">
-                            <?php
-        $sql_m= $link->query("SELECT * FROM `films`");
-        $Sum = 0;
-        $sql_reserve= $link->query("SELECT * FROM `reserve`");
-        
-        if(isset($sql_reserve)){
-       foreach($sql_reserve as $reserve ){
-            if($reserve['id_user'] == $id_user){
-            $a = $reserve['id_film'];
-            $kol =  $reserve['number_tickets']; 
-            $flm_m = [];
-            foreach ($sql_m as $film_m) {
-                if($film_m['id'] == $a){
-                $flm_m= $film_m;
-            ?>
-                <?php break;  
-                }   
-            }
-
-            ?> 
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <em><?php echo '"'.$flm_m['name'].'"'; ?></em>
-                                </td>
-                                <td>
-                                    <?php echo $flm_m['daytime']; ?>
-                                </td>
-                                <td>
-                                   <?php echo $flm_m['daytime']; ?>
-                                </td>
-                                <td>
-                                <?php echo $kol.'шт.'; ?>
-                                </td>
-                                <td>
-                                <?php echo $kol*$flm_m['price'].'₽'; ?>
-                                </td>
-                                <td><script src="//megatimer.ru/get/ec30f003f1b6b3aed7cd53dc7ad44e1e.js"></script></td>
-                            </tr>
-                               <?php
-        $Sum +=$kol*$flm_m['price']; 
-        }   
-        }        
-        }
-        ?>
-        <tr>
-             <td align="right" colspan="5"><b> <?php echo 'Всего: '.$Sum.'₽' ?></b></td>
-             <td></td>
-         </tr>
-        <?php $sql_del_res= $link->query("DELETE FROM `reserve` WHERE date_added < now() - interval 60 second");
-          ?>
-                        </tbody>
-                    </table>
-
-                </div>
+                      </table>
+                  </div>
+            </div> 
             </div>
-
-
- </div>
-            </div>
-            <div class="logout"><button class="site-btn"><a href="authorization/handler_form/logout.php" class="logout">Выход</a></button></div>
-            </form>
+        </div>
+    </div>
 </section>
 
  </body>

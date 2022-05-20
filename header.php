@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css"><!-- 
-    <link rel="stylesheet" href="css/basket.css" type="text/css"> -->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/plyr.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
@@ -62,11 +61,9 @@
                               <li><a class="dropdown-item" href="#">SubPage 3</a></li>
                             </ul>
                         <a href="index.php?page=authorization"><img src="images/user.png" alt=""></a>
-                    <!-- <a class="nav-link" data-bs-toggle="modal" data-bs-target="#tickets" href="#"><i class="fas fa-ticket-alt"></i></a> -->
-                    </div>
-
                     </div>
                 </div>
+            </div>
             </div>
     </header>
     <!-- Header End -->
