@@ -45,9 +45,8 @@ session_start();
                             <?php 
                             $sql_sessions=$link->query("SELECT * FROM `schedule`");
                                 foreach ($sql_sessions as $s): ?>
-                                <form action="delete_session.php" method="post" enctype="multipart/form-data">
                         <tr>
-                            <td><input type='hidden' name="id_session" value='<?php echo $s['id_session'] ?>'><img src="images/tickets.png" alt=""></td>
+                            <td><img src="images/tickets.png" alt=""></td>
                             <td><input type="text" id="nameses" name="nameses" value="<?php
                                 $sql_film=$link->query("SELECT * FROM `films`");
                                     foreach ($sql_film as $f):
@@ -57,6 +56,15 @@ session_start();
                                                  }
                                     endforeach; ?>">
                             </td>
+                            <form action="./correct_sessions.php" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id_day" value="<?php
+                                $sql_day=$link->query("SELECT * FROM `day`");
+                                    foreach ($sql_day as $d):
+                                            if ($d['id_day'] == $s['id_day'])
+                                                {
+                                                    echo $d['id_day'];
+                                                 }
+                                    endforeach; ?>">
                             <td><input type="text" id="date" name="date" value="<?php
                                 $sql_day=$link->query("SELECT * FROM `day`");
                                     foreach ($sql_day as $d):
@@ -66,10 +74,13 @@ session_start();
                                                  }
                                     endforeach; ?>">
                             </td>
+                            <td><button type="submit" id="btncheck-session"><img src="images/check.png" width="20vh"></td>
+                            </form>
+                            <form action="./delete_session.php" method="post" enctype="multipart/form-data">
+                            <input type='hidden' name="id_session" value='<?php echo $s['id_session'] ?>'>
                             <td><input type='submit' id="del" name="del" value='удалить'></td>
-                            <td><img src="images/check.png" alt=""></td>
+                            </form>
                         </tr>
-                                </form>
                             <?php endforeach;?>
                         </tbody>
                       </table>
@@ -87,7 +98,7 @@ session_start();
                             $sql_users=$link->query("SELECT * FROM `users`");
                                 foreach ($sql_users as $u): ?>
                         <tr>
-                            <td><?php echo $u['avatar'];?></td>
+                            <td><img src="<?php echo $u['avatar'];?>" alt=""></td>
                             <td><?php echo $u['full_name'];?></td>
                             <td><?php echo $u['email'];?></td>
                         </tr>
@@ -95,7 +106,7 @@ session_start();
                         </tbody>
                       </table>
                     </div>
-                  </div> -->
+                  </div>  -->
 </div>
         <div class="films">
             <div class="section-title">

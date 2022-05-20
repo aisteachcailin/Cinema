@@ -56,8 +56,13 @@ p {
 p span {
 	color: #f0f0f0;
 }
+
+.table td {
+	border-top: 1px solid #141621;
+}
+
 hr {
-	background-color: #20243c;
+	background-color: #141621;
 }
 /*profile and admin*/
 
@@ -190,6 +195,11 @@ input#genre, input#year, input#year, input#director, input#country, input#lastin
 button#btncheck, button#btntrash {
     border: none;
     background-color: #05060b;
+}
+
+button#btncheck-session {
+	background-color: #0d1019;
+	border: none;
 }
 
 #del {
