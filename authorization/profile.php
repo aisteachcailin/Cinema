@@ -104,6 +104,7 @@ $id_user = $_SESSION['user']['id'];
                                     }
                                 endforeach;
                         ?></div>
+                                <div class="lasting_ticket"><span>Длительность:</span><?php echo $flm_m['lasting'] ?></div>
                                 <div class="place_ticket"><span>Место:</span></div>
                                 <div class="row_ticket"><span>Ряд:</span></div>
                                 <div class="kol_ticket"><span>Количество билетов:</span><?php echo $kol.'шт.'; ?></div>

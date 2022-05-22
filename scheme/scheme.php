@@ -8,6 +8,23 @@
 </head>
 
 <body>
+    <!-- модальное окно оплаты билетов -->
+<div class="modal fade" id="pay_tickets" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
 
 	 <div class="scheme">
 
@@ -22,27 +39,8 @@
 </div>
 
 </div>
- 
-		<a href="reserve_tickets.php"><button type="submit" class="btn btn-dark">Забронировать билеты</button>
-      <a href="pay_tickets.php"><button type="button" class="btn btn-light" >Оплатить билеты</button></a>
-<!-- 
-<script>
-    var numCount = document.getElementById('num_count');
-    var plusBtn = document.getElementById('button_plus');
-    var minusBtn = document.getElementById('button_minus');
-    plusBtn.onclick = function() {
-        var qty = parseInt(numCount.value);
-        qty = qty + 1;
-        numCount.value = qty;
-    }
-    minusBtn.onclick = function() {
-        var qty = parseInt(numCount.value);
-        if(qty>1){
-            qty = qty - 1;
-        }
-        numCount.value = qty;
-    }
-</script> -->
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#pay_tickets">Забронировать билеты</button>
+    <a href="#pay_tickets"><button type="button" class="btn btn-light" >Оплатить билеты</button></a>
 
 </body>
 </html>

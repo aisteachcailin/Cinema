@@ -113,9 +113,15 @@ $date_to2 = date("Y-m-d", $d1);
 $sql_date_to2 = "SELECT `id_day` FROM `day` WHERE `day` >= '$date_to2'";
 /*$sss = $_SESSION['sql_date_to'];
 $sql_date_to2=$link -> query($sss);*/
-$id_film = "SELECT `id_film` FROM `schedule` WHERE `id_day` = '$sql_date_to2'";
-$film = "SELECT * FROM `films` WHERE `id` = '$id_film'";
-var_dump($sql_date_to2); 
+$id_film = "SELECT `id_film` FROM `schedule` WHERE `schedule`.`id_day` = '$sql_date_to2'";
+/*$film = "SELECT * FROM `films` WHERE `id` = '$id_film'";*/
+
+$film = "SELECT * FROM `films` f JOIN `schedule` s
+   ON f.`id` = s.`id_film`
+   JOIN `day` d
+   ON s.`id_day` = d.'$sql_date_to2'";
+
+var_dump($film);  
 
     $sql = $link -> query($film);
     unset($_SESSION['date_to']);

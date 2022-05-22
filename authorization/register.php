@@ -1,10 +1,10 @@
 <?php
     session_start();
+    $id_user = $_SESSION['user']['id'];
     if ($_SESSION['user']) {
         header('Location: index.php?page=profile');
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -58,10 +58,10 @@
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="file" name="avatar">
+                                <input type="file" name="avatar">s
                                 <span class="icon_image"></span>
                             </div>
-                            <button type="submit" class="site-btn">Зарегистрироваться</button>
+                            <button type="submit" class="site-btn" name="user_create" value="create">Зарегистрироваться</button>
                         <h5>У вас уже есть аккаунт? <a href="index.php?page=authorization">Войти</a></h5>
                                  <?php
             if ($_SESSION['message']) {

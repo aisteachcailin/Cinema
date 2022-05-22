@@ -8,9 +8,9 @@ if(isset($_SESSION['user'])){
 
 	foreach($add_film as $key => $value){
 			$id_film = $key;
-			$number_tickets = (int)$value;
+			$number_tickets = (int)$value;\
 
-            mysqli_query($link, "INSERT INTO `tickets` (`id`, `id_user`, `id_film`, `number_tickets`) VALUES (NULL, '$id_user', '$id_film', '$number_tickets')");
+            mysqli_query($link, "INSERT INTO `tickets` (`id`, `id_user`, `id_film`, `number_tickets`, `place`, `row`, `status`) VALUES (NULL, '$id_user', '$id_film', '$number_tickets', '$place', '$row', 'paid')");
 			}
        			       
         		header('Location: index.php?page=profile');

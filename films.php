@@ -76,6 +76,7 @@ require('connect.php');
 
                         <div class="row">
                               <?php 
+                              $sql=$link->query("SELECT * FROM `films`");
                                 foreach ($sql as $flm): ?>
 
                             <div class="col-lg-4 col-md-6 col-sm-6">

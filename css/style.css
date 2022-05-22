@@ -142,12 +142,12 @@ img#empty {
 	color: #fff;
 }
 
-.day_ticket, .place_ticket, .row_ticket, .kol_ticket, .price_ticket, .status_ticket {
+.day_ticket, .lasting_ticket, .place_ticket, .row_ticket, .kol_ticket, .price_ticket, .status_ticket {
 	font-family: "Mulish", sans-serif;
 	font-size: 18px;
 	color: #fff;
 }
-.day_ticket span, .place_ticket span, .row_ticket span, .kol_ticket span, .price_ticket span, .status_ticket span{
+.day_ticket span, .lasting_ticket span, .place_ticket span, .row_ticket span, .kol_ticket span, .price_ticket span, .status_ticket span{
 	font-size: 16px;
 	color: #a4a4a4;
 	padding-right: 5px;

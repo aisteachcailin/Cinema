@@ -23,6 +23,8 @@
 .places {
 	text-align: center;
 	padding: 5vh;
+	width: 108vh;
+    height: 50vh;
 }
 
 .number_place {
