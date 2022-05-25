@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$db_name = 'testtt';
+$db_name = 'cinema_2';
 //соединяемся с сервером БД
 $link = mysqli_connect($host, $user, $password, $db_name);
 if ($link->connect_errno) exit ('Ошибка соединения с БД :(');

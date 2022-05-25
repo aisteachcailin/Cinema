@@ -45,6 +45,7 @@ if ($_SESSION['user']['role'] == 2) {
             if ($_SESSION['message']) {
                 echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
             }
+            unset($_SESSION['message']);
         ?>
                         </form>
                         <a href="#" class="forget_pass">Забыли пароль?</a>

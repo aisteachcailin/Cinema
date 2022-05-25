@@ -1,46 +1,87 @@
+<?php 
+session_start();
+require('connect.php');
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<title>Схема кинозала</title>
-	<link rel="stylesheet" href="scheme/css/scheme.css">
-
+    <meta charset="UTF-8">
+    <title>Схема кинозала</title>
+    <link rel="stylesheet" href="scheme/css/scheme.css">
 </head>
 
 <body>
-    <!-- модальное окно оплаты билетов -->
-<div class="modal fade" id="pay_tickets" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        ...
-      </div>
+
+     <div class="scheme">
+    <div class="session_info">
+<?php  
+    $id_f = $_SESSION['id_film'];
+    $sql_films=$link->query("SELECT `name`, `id` FROM `films`");
+        foreach($sql_films as $films):
+            if ($id_f == $films['id']) { ?>
+                <div class="film_name"><?php echo 'Фильм: "'.$films['name'].'"'; ?></div>
+            <?php }
+        endforeach;
+/*    $sql_sch=$link->query("SELECT * FROM `schedule`");
+    $sql_day=$link->query("SELECT * FROM `day`");
+        foreach($sql_sch as $sch):
+            if ($id_f == $sch['id_film']) { 
+                foreach($sql_day as $day):
+                    if ($day['id_day'] == $sch['id_day']) { ?>
+                        <div class="film_day"><?php echo 'Дата и время: '.$day['day']; ?></div>
+              <?php }
+                endforeach;
+            }
+        endforeach;*/
+?>
     </div>
-  </div>
-</div>
-
-	 <div class="scheme">
-
 <div class="places">
-	<?php
-      $sql_place=$link->query("SELECT * FROM `place`");
-			foreach ($sql_place as $place): ?> 
+    <form action="bron_place.php" method="post" style="margin-left: 100px;">
+<table >
+<?php
+    for ($i=1;$i<=5;$i++):  ?> 
+                <tr>
+                    <td> <?php echo 'Ряд '.$i ?> </td>
+                 <?php  for ($j=1;$j<=10;$j++):?>
 
-<button onclick="style.backgroundColor='#ff5722'" class="place" id="btl_pl"><div class="number_place"><?php echo $place['place'];?></div></button>
-			<?php endforeach; ?>
+                    <td>
+                        <?php
+                         
+                       $sql=$link->query("SELECT * FROM `tickets` WHERE `number_row` = '$i' AND `number_place` = '$j' AND `id_film` = '$id_f'");
+                       $color = '#19bfb9';
+                       foreach($sql as $ticket):
+                        if ($ticket['status'] == 'Б') {
+                            $color = '#ff5722';
+                        }
+                        elseif ($ticket['status'] == 'В') {
+                            $color = '#22ff57';
+                        }
+                       endforeach;?>
 
+                       <button class="place" style="background-color: <?php echo $color; ?>" id="btn" name="<?php echo $i;?>" value="<?php echo $j;?>" ><div class="number_place"><?php echo $j;?></div></button>
+                     </td>
+                <?php 
+                    endfor;
+                ?>
+                </tr>
+
+
+            <?php 
+     
+         endfor;
+?>
+</table> 
+<div class="bronpay" style="margin-top: 20px; margin-left: 25px;">
+    <a href="reserve_tickets.php"><button type="button" class="btn btn-dark">Забронировать билеты</button></a>
+    <a href="pay_tickets.php"><button type="button" style="margin-left: 10px;" class="btn btn-light" >Оплатить билеты</button></a>
 </div>
+ </form>
+        <div class="color_place">
+            <div class="bron"><div class="square_bron"></div><p> забронированные места</p></div>
+            <div class="pay"><div class="square_pay"></div><p> оплаченные места</p></div>
+        </div>
+ </div>
 
-</div>
-    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#pay_tickets">Забронировать билеты</button>
-    <a href="#pay_tickets"><button type="button" class="btn btn-light" >Оплатить билеты</button></a>
-
+    </div>
 </body>
 </html>

@@ -8,7 +8,7 @@
 }
 
 .place {
-	background-color: #19bfb9;
+	/*	*/
 	border-radius: 100%;
     border: none;
     height: 5vh;
@@ -39,4 +39,58 @@
 .number_place:hover {
 	opacity: 1;
 	transition: 0.3s;
+}
+
+button.btn.btn-dark, button.btn.btn-light{
+    background-color: #30354c8a;
+    letter-spacing: 0.5px;
+    font-family: "Mulish", sans-serif;
+}
+
+button.btn.btn-dark:hover {
+    border: 0.5px solid #ff5722;
+    color: #ff5722;
+    background-color: #05060b;
+    transition: 0.5s;
+}
+
+button.btn.btn-light:hover {
+    border: 0.5px solid #22ff57;
+    color: #22ff57;
+    background-color: #05060b;
+    transition: 0.5s;
+}
+
+.square_bron {
+
+	width: 20px;
+	height: 20px;
+	background-color: #ff5722;
+}
+
+.square_pay {
+	width: 20px;
+	height: 20px;
+	background-color: #22ff57;
+}
+
+.bron p, .pay p {
+	width: fit-content;
+	padding-left: 10px;
+}
+
+.bron, .pay {
+	display: inline-flex;
+}
+
+.color_place {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.film_name {
+	font-size: 20px;
+	font-family: "Mulish", sans-serif;
+	color: #fff;
 }

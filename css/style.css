@@ -1679,19 +1679,6 @@ form td {
 	color: #ff5722;
 }
 
-/*scheme*/
-
-/*.scheme {
-	display: flex;
-	flex-direction: column;
-}
-
-.place {
-	background-color: #fff;
-}
-.rows {
-	text-align: center;
-}*/
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 @media only screen and (min-width: 1000px) and (max-width: 3000px) {

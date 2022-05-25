@@ -34,6 +34,7 @@ if (!isset($page)) {
     require('authorization/admin.php');
 } elseif ($page == 'openFilm') {
     $idf = $_GET['id'];
+    $_SESSION['id_film'] = $idf ;//запоминаем id выбранного фильма
     $flm = [];
     foreach ($sql as $film) {
         if($film['id'] == $idf) {
@@ -110,21 +111,57 @@ if (isset($_SESSION['date_to'])) {
 $date_to = $_SESSION['date_to'];
 $d1 = strtotime($date_to); // переводит из строки в дату
 $date_to2 = date("Y-m-d", $d1);
-$sql_date_to2 = "SELECT `id_day` FROM `day` WHERE `day` >= '$date_to2'";
-/*$sss = $_SESSION['sql_date_to'];
-$sql_date_to2=$link -> query($sss);*/
-$id_film = "SELECT `id_film` FROM `schedule` WHERE `schedule`.`id_day` = '$sql_date_to2'";
-/*$film = "SELECT * FROM `films` WHERE `id` = '$id_film'";*/
+$query_date_to2 = "SELECT `id_day` FROM `day` WHERE `day` = '$date_to2'";//id дня
+$sql_date_to2 = $link ->query($query_date_to2);
+$array_date_to2 = $sql_date_to2->fetch_assoc();
+$str_date_to2 = $array_date_to2['id_day'];
 
-$film = "SELECT * FROM `films` f JOIN `schedule` s
-   ON f.`id` = s.`id_film`
-   JOIN `day` d
-   ON s.`id_day` = d.'$sql_date_to2'";
+$id_film = "SELECT `id_film` FROM `schedule` WHERE `id_day` = '$str_date_to2'";//id филма
+$sql_id_film=$link->query($id_film);
+$array_id_film = $sql_id_film->fetch_assoc();
+$str_id_film = $array_id_film['id_film'];
 
-var_dump($film);  
+/*$sql=$link->query("SELECT * FROM `films` WHERE `id` = '$str_id_film'");*/
 
-    $sql = $link -> query($film);
-    unset($_SESSION['date_to']);
+
+
+
+
+
+/*$sql_day=$link->query("SELECT * FROM `day`");
+
+foreach ($sql_day as $day)
+    $b = $day['id_day'];
+    $sql_sch=$link->query("SELECT * FROM `schedule` WHERE `id_day` = '$b'");
+
+        foreach($sql_sch as $sch) 
+        $a = $sch['id_film'];
+        $sql_films=$link->query("SELECT * FROM `films` WHERE `id` = '$a'");
+
+        endforeach;
+            
+endforeach;*/
+
+
+/*
+$sql_date=$link->query($sql_date_to2);
+$sql_date_2 = mysqli_fetch_assoc($sql_date);
+$id_day_str = $sql_date_2['id_day'];
+
+$id_film = "SELECT `id_film` FROM `schedule` WHERE `id_day` = '$id_day_str'";
+$sqll=$link->query($sql_film);
+$sqll_array = mysqli_fetch_assoc($sqll);
+$sql_str = $sqll['id_film'];
+var_dump($sql_str);
+
+
+$sql_film_2 = mysqli_fetch_assoc($sql_film);
+
+/*$film = "SELECT * FROM `films` WHERE `id` = '$id_film'";
+
+$film = "SELECT `name`, `day` FROM `films` f JOIN `schedule` s ON f.`id` = s.`id_film` JOIN `day` d ON s.`id_day` = d.'$sql_date_to2'";*/
+
+    /*unset($_SESSION['date_to']);*/
 }
 require('films.php');    
 }   

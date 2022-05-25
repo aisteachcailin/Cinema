@@ -66,6 +66,9 @@ $id_user = $_SESSION['user']['id'];
             </div>
            <div class="card_profile">
                   <div class="card-body">
+                    <div class="section-title">
+                        <h4>Билеты</h4>
+                    </div>
                       <table class="table">
                         <tbody>
                             <?php
@@ -87,9 +90,7 @@ $id_user = $_SESSION['user']['id'];
             }
 
             ?>    
-                        <tr>                  <div class="section-title">
-                        <h4>Билеты</h4>
-                    </div>
+                        <tr>
                             <td><img id="img_ticket" src="<?php echo $flm_m['imgs'];?>"></td>
                             <td><div class="film_ticket"><?php echo $flm_m['name']; ?></div>
                                 <div class="day_ticket"><span>Дата и время сеанса:</span><?php $sql_sch= $link->query("SELECT * FROM `schedule`");
