@@ -92,15 +92,15 @@
                      <div class="openFilm_price"><img src="images/ticket.png"><?php echo $flm['price'].'₽';?></div>
                     </div>
                     <hr>
-                                        <!-- <form id="form1" name="form1" action="add_cart.php" method="post"> -->
-                    <table><tr>
+                    <table id="sessions_day_time">
                         <?php
                                 $sql_sch=$link->query("SELECT * FROM `schedule`");
                                      foreach ($sql_sch as $sch):
                                        if ($sch['id_film'] == $flm['id'])
                                             {
                         ?>
-                        <td><div class="day"><a href="index.php?page=scheme&id_film=<?php echo $sch['id_film']; ?>&id_day=<?php echo $sch['id_day']; ?>"><?php
+                        <tr>
+                        <td><div class="day"><?php
                                 $sql_day=$link->query("SELECT * FROM `day`");
                                                 foreach ($sql_day as $day):
                                                      if ($day['id_day'] == $sch['id_day'])
@@ -110,11 +110,29 @@
                                                  }
 
                                                 endforeach;?> 
+                        </div></td>
+
+
+                        
+                        <td><div class="time"><a href="index.php?page=scheme&id_film=<?php echo $sch['id_film']; ?>&id_day=<?php echo $sch['id_day']; ?>&id_time=<?php echo $sch['id_time']; ?>"><?php
+                                $sql_time=$link->query("SELECT * FROM `time`");
+                                                foreach ($sql_time as $time):
+                                                     if ($time['id_time'] == $sch['id_time'])
+                                                {
+                                                    echo $time['time'];
+                                                    
+                                                 }
+
+                                                endforeach;?> 
                                                 </a>
                         </div></td>
+
+
+
+
+                        </tr>
                                 <?php } endforeach; ?>
-                   </tr></table>
-                    <!--   </form> -->
+                   </table>
                     <hr>
                     </div>
                     <div class="facts">
@@ -156,24 +174,6 @@
         </div>
     </div>
      </section>
-
-<script>
-    var numCount = document.getElementById('num_count');
-    var plusBtn = document.getElementById('button_plus');
-    var minusBtn = document.getElementById('button_minus');
-    plusBtn.onclick = function() {
-        var qty = parseInt(numCount.value);
-        qty = qty + 1;
-        numCount.value = qty;
-    }
-    minusBtn.onclick = function() {
-        var qty = parseInt(numCount.value);
-        if(qty>1){
-            qty = qty - 1;
-        }
-        numCount.value = qty;
-    }
-</script>
 </div>
 </div>
 </div>

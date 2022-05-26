@@ -17,7 +17,7 @@ $id_user = $_SESSION['user']['id'];
             <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
                 <div class="profile-detail__personal">
                     <div>
-                        <img src="authorization/avatars/default.png" width="200vh" height="200vh" alt="">
+                        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200vh" height="200vh" alt="">
                     </div>
                        <div class="profile-text">
                         <div class="profile-title">

@@ -45,7 +45,7 @@
 
     if ($password === $password_confirm) {
 
-    $path = 'uploads/' . time() . $_FILES['avatar']['name'];
+    $path = 'avatars/' . time() . $_FILES['avatar']['name'];
         if (!move_uploaded_file($_FILES['avatar']['tmp_name'], '../' . $path)) {
             $_SESSION['message'] = 'Ошибка при загрузке сообщения';
             header('Location: index.php?page=register');
@@ -53,10 +53,28 @@
         }
 
         $password = md5($password);
+        $path2='authorization/'.$path;
 
-        mysqli_query($link, "INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `password`, `avatar`, `role`) VALUES (NULL, '$full_name', '$login', '$email', '$password', '$path', '2')");
+        mysqli_query($link, "INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `password`, `avatar`, `role`) VALUES (NULL, '$full_name', '$login', '$email', '$password', '$path2', '2')");
 
         $_SESSION['message'] = 'Регистрация прошла успешно!';
+
+        $check_user = mysqli_query($link, "SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
+        //mysqli_num_rows() - возвращает число рядов в результирующей выборке
+  
+            if (mysqli_num_rows($check_user) > 0) {
+            //mysqli_fetch_assoc - Обрабатывает ряд результата запроса и возвращает ассоциативный массив
+                $user = mysqli_fetch_assoc($check_user);
+            //при успешной авторизации запоминается данные об этом пользователи в сессию 'user'
+                $_SESSION['user'] = [
+                    "id" => $user['id'],
+                    "full_name" => $user['full_name'],
+                    "avatar" => $user['avatar'],
+                    "login" => $user['login'],
+                    "email" => $user['email'],
+                    "role" => $user['role']
+                ];
+}
         header('Location: ../../index.php?page=profile');
 
 

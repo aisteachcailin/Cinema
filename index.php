@@ -10,7 +10,7 @@ require('connect.php');
 //подключение к бд
 
 if (!isset($_SESSION['sql'])) {
-    $_SESSION['sql'] = "SELECT * FROM `films`";
+    $_SESSION['sql'] = "SELECT * FROM `films`, `schedule`";
 }
 
 $sql_text = $_SESSION['sql'];
@@ -33,6 +33,7 @@ if (!isset($page)) {
 } elseif ($page == 'admin') {
     require('authorization/admin.php');
 } elseif ($page == 'openFilm') {
+
     $idf = $_GET['id'];
     $_SESSION['id_film'] = $idf ;//запоминаем id выбранного фильма
     $flm = [];
@@ -46,6 +47,14 @@ if (!isset($page)) {
     require('openFilm.php');
 
 } elseif ($page == 'scheme') {
+
+    $idd = $_GET['id_day'];
+    $idt = $_GET['id_time'];
+
+    $_SESSION['id_day'] = $idd;
+    $_SESSION['id_time'] = $idt;
+
+
     require('scheme/scheme.php');
 
 } elseif ($page == 'film_genre') {

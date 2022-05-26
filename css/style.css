@@ -222,6 +222,7 @@ section.profile-detail {
     border-style: solid;
     border-radius: 100%;
     padding: 3px;
+    object-fit: cover;
 }
 .profile-detail__personal {
     margin-top: 50px;
@@ -810,9 +811,18 @@ section.product.spad.film {
 }
 
 .day {
+	color: #a4a4a4;
+}
+
+table#sessions_day_time td {
+    padding-top: 10px;
+}
+
+.time {
     border: 0.5px solid #a4a4a4;
     border-radius: 5px;
     padding: 5px;
+    margin-left: 20px;
 }
 .product__sidebar__view__item.set-bg.mix.day.years {
     border: none;
@@ -821,16 +831,16 @@ section.product.spad.film {
     color: #fff;
 }
 
-.day a {
+.time a {
     color: #a4a4a4;
 }
 
-.day:hover {
+.time:hover {
 	transition: 0.3s;
     border: 0.5px solid #ff5722;
 }
 
-.day:hover a {
+.time:hover a {
 	transition: 0.3s;
     color: #ff5722;
 }

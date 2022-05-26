@@ -1,6 +1,5 @@
 <?php 
 session_start();
-require('connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -16,23 +15,15 @@ require('connect.php');
     <div class="session_info">
 <?php  
     $id_f = $_SESSION['id_film'];
+    $id_d = $_SESSION['id_day'];
+    $id_t = $_SESSION['id_time'];
+
     $sql_films=$link->query("SELECT `name`, `id` FROM `films`");
         foreach($sql_films as $films):
             if ($id_f == $films['id']) { ?>
                 <div class="film_name"><?php echo 'Фильм: "'.$films['name'].'"'; ?></div>
             <?php }
         endforeach;
-/*    $sql_sch=$link->query("SELECT * FROM `schedule`");
-    $sql_day=$link->query("SELECT * FROM `day`");
-        foreach($sql_sch as $sch):
-            if ($id_f == $sch['id_film']) { 
-                foreach($sql_day as $day):
-                    if ($day['id_day'] == $sch['id_day']) { ?>
-                        <div class="film_day"><?php echo 'Дата и время: '.$day['day']; ?></div>
-              <?php }
-                endforeach;
-            }
-        endforeach;*/
 ?>
     </div>
 <div class="places">
@@ -47,7 +38,7 @@ require('connect.php');
                     <td>
                         <?php
                          
-                       $sql=$link->query("SELECT * FROM `tickets` WHERE `number_row` = '$i' AND `number_place` = '$j' AND `id_film` = '$id_f'");
+                       $sql=$link->query("SELECT * FROM `tickets` WHERE `number_row` = '$i' AND `number_place` = '$j' AND `id_film` = '$id_f' AND `day` = '$id_d' AND `time` = '$id_t'");
                        $color = '#19bfb9';
                        foreach($sql as $ticket):
                         if ($ticket['status'] == 'Б') {
@@ -58,9 +49,13 @@ require('connect.php');
                         }
                        endforeach;?>
 
-                       <button class="place" style="background-color: <?php echo $color; ?>" id="btn" name="<?php echo $i;?>" value="<?php echo $j;?>" ><div class="number_place"><?php echo $j;?></div></button>
+                       <button class="place" style="background-color: <?php echo $color; ?>" id="btn" onclick="soldout()" name="<?php echo $i;?>" value="<?php echo $j;?>" ><div class="number_place"><?php echo $j;?></div></button>
                      </td>
+
                 <?php 
+
+
+
                     endfor;
                 ?>
                 </tr>
@@ -83,5 +78,12 @@ require('connect.php');
  </div>
 
     </div>
+<script>
+    function soldout() {
+        var color = '<?php echo $color; ?>'; 
+        if () {
+        alert('Нет свободных мест');
+    }
+</script> 
 </body>
 </html>

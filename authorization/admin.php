@@ -14,7 +14,7 @@ session_start();
             <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
                 <div class="profile-detail__personal">
                     <div>
-                        <img src="authorization/avatars/default.png" width="200vh" height="200vh" alt="">
+                        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200vh" height="200vh" alt="">
                     </div>
                        <div class="profile-text">
                         <div class="profile-title">
@@ -24,6 +24,7 @@ session_start();
                             <i class="fa fa-envelope"></i>
                             <a href="#"><?= $_SESSION['user']['email'] ?></a>
                         </div>
+                        <?php var_dump($_SESSION['user']['avatar']) ?>
                         <div>
                         <button type="submit" id="btncheck"><img width="25vh" id="check_profile" src="images/check.png"></button>
                         </div> 
