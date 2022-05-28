@@ -105,7 +105,7 @@
                                                 foreach ($sql_day as $day):
                                                      if ($day['id_day'] == $sch['id_day'])
                                                 {
-                                                    echo $day['day'];
+                                                    echo date_format(date_create($day['day']), 'd-m-Y');
                                                     
                                                  }
 
@@ -119,7 +119,7 @@
                                                 foreach ($sql_time as $time):
                                                      if ($time['id_time'] == $sch['id_time'])
                                                 {
-                                                    echo $time['time'];
+                                                   echo date_format(date_create($time['time']), 'H:i');
                                                     
                                                  }
 

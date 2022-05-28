@@ -48,7 +48,6 @@ if ($_SESSION['user']['role'] == 2) {
             unset($_SESSION['message']);
         ?>
                         </form>
-                        <a href="#" class="forget_pass">Забыли пароль?</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -58,26 +57,9 @@ if ($_SESSION['user']['role'] == 2) {
                     </div>
                 </div>
             </div>
-            <div class="login__social">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="login__social__links">
-                            <span>или</span>
-                            <ul>
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Facebook</a></li>
-                                <li><a href="#" class="google"><i class="fa fa-google"></i>Google</a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i>Twitter</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
-    <!-- Login Section End -->
     </div>
-    <!-- Search model end -->
 
     <!-- Js Plugins -->
     <script src="js/main.js"></script>

@@ -45,12 +45,6 @@ require('connect.php');
                     <div class="sort">
                         <div class="sort_text"><i class="fal fa-sort-alt"></i>Сортировать:</div>
                         <forma action="" method="get">
-<!--                  <select class="selecter" onchange="location=value">
-                        <option value="" selected="selected">По дате</option>
-                        <option value="index.php?page=sort&id_sort=6">Самые новые</option>
-                        <option value="index.php?page=sort&id_sort=5">Самые старые</option>
-                    </select> -->
-
                     <select class="selecter" onchange="location=value">
                         <option value="" selected="selected">По названию</option>
                         <option value="index.php?page=sort&id_sort=1">А-Я</option>

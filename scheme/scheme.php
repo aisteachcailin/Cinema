@@ -11,6 +11,35 @@ session_start();
 
 <body>
 
+
+<!-- форма оплаты -->
+
+<div class="modal fade" id="pay" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Оплата</h3>
+      </div>
+    <div class="modal-body">
+        <table>
+    <tr id="card_data1">
+      <td><input type="text" class="card_name" placeholder="Your name" autofocus></td>
+      <td><input type="text" class="mm" placeholder="MM"></td>
+      <td><input type="text" class="yy" placeholder="YY"></td>
+    </tr>
+    <tr id="card_data2">
+      <td><input type="text" class="card_number" placeholder="XXXX XXXX XXXX XXXX"></td>
+      <td><input type="text" class="cvc" placeholder="CVC"></td>
+    </tr> 
+    <tr>
+        <td><a href="pay_tickets.php"><button type="submit" class="data_pay" data-bs-dismiss="modal">Оплатить</button></a></td>
+    </tr>
+    </table>
+    </div>
+     </div>
+   </div>
+</div>
+
      <div class="scheme">
     <div class="session_info">
 <?php  
@@ -53,9 +82,6 @@ session_start();
                      </td>
 
                 <?php 
-
-
-
                     endfor;
                 ?>
                 </tr>
@@ -67,8 +93,8 @@ session_start();
 ?>
 </table> 
 <div class="bronpay" style="margin-top: 20px; margin-left: 25px;">
-    <a href="reserve_tickets.php"><button type="button" class="btn btn-dark">Забронировать билеты</button></a>
-    <a href="pay_tickets.php"><button type="button" style="margin-left: 10px;" class="btn btn-light" >Оплатить билеты</button></a>
+    <a href="reserve_tickets.php"><button type="button" class="bron">Забронировать билеты</button></a>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#pay" style="margin-left: 10px;" class="pay" >Оплатить билеты</button>
 </div>
  </form>
         <div class="color_place">
@@ -80,10 +106,16 @@ session_start();
     </div>
 <script>
     function soldout() {
-        var color = '<?php echo $color; ?>'; 
-        if () {
-        alert('Нет свободных мест');
-    }
+
+document.getElementById("btn");
+btn.setAttribute('disabled', true);
+/*
+  if (<?php $color == '#ff5722' ?>){
+    btn.setAttribute('disabled', true);
+  }else{
+    btn.removeAttribute('disabled');
+  }*/
+}
 </script> 
 </body>
 </html>

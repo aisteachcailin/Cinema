@@ -65,21 +65,48 @@ hr {
 	background-color: #141621;
 }
 /*profile and admin*/
+.bron_status {
+	border: 0.5px solid #ff5722;
+    color: #ff5722;
+    background-color: #05060b;
+    transition: 0.5s;
+    width: fit-content;
+    border-radius: 3px;
+    padding: 3px;
+}
+.pay_status {
+	border: 0.5px solid #22ff57;
+    color: #22ff57;
+    background-color: #05060b;
+    transition: 0.5s;
+    width: fit-content;
+    border-radius: 3px;
+    padding: 3px;
+}
 
 .films {
 	margin-top: 10vh;
 	margin-left: -10vh;
 }
-input[type="text"] {
+
+img#edit_profile {
     border: none;
-    width: -webkit-fill-available;
-    color: #fff;
-    background-color: #05060b;
-    font-family: "Mulish", sans-serif;
+    border-radius: 0%;
 }
 
-img#check_profile {
-    border: none;
+input#full_name {
+    background-color: #ffffff;
+    color: #000000;
+    width: 188px;
+    height: 30px;border-color: #dadada;
+    border-radius: 3px;
+    border-style: solid;
+}
+
+input#email_correct {
+    border-style: solid;
+    border-color: #dadada;
+    border-radius: 3px;
 }
 
 .info_for_admin {
@@ -89,6 +116,14 @@ img#check_profile {
 
 input#date, input#nameses {
 	font-size: 15px;
+}
+
+button#save {
+	margin-top: 15px;
+}
+
+.input__items {
+	padding: 8px;
 }
 
 
@@ -140,14 +175,25 @@ img#empty {
 	font-family: "Mulish", sans-serif;
 	font-size: 35px;
 	color: #fff;
+} 
+
+.pay_bron a:hover {
+	color: #22ff57;
+	transition: 0.5s;
+}
+.cancel_bron a:hover, .cancel_pay a:hover {
+	color: #ba0505;
+	transition: 0.5s;
 }
 
-.day_ticket, .lasting_ticket, .place_ticket, .row_ticket, .kol_ticket, .price_ticket, .status_ticket {
+
+
+.day_ticket, .time_ticket, .lasting_ticket, .place_ticket, .row_ticket, .kol_ticket, .price_ticket {
 	font-family: "Mulish", sans-serif;
 	font-size: 18px;
 	color: #fff;
 }
-.day_ticket span, .lasting_ticket span, .place_ticket span, .row_ticket span, .kol_ticket span, .price_ticket span, .status_ticket span{
+.day_ticket span, .time_ticket span, .lasting_ticket span, .place_ticket span, .row_ticket span, .kol_ticket span, .price_ticket span {
 	font-size: 16px;
 	color: #a4a4a4;
 	padding-right: 5px;
@@ -179,7 +225,7 @@ img#empty {
 input#price {
 	background-color: #19bfb7;
 }
-input#nameses, input#date {
+input#nameses, input#date, input#time {
 	background-color: #0d1019;
 }
 
@@ -203,11 +249,68 @@ button#btncheck-session {
 }
 
 #del {
-    color: #ff5722;
-    border: 0.5px solid #ff5722;
+    border: none;
     background-color: #0d1019;
-    border-radius: 5px;
-    font-family: "Mulish", sans-serif;
+}
+
+/*форма оплаты*/
+
+.modal-header {
+    background: #13928c;
+}
+
+table#pay_form td {
+    border: #fff;
+}
+
+button.data_pay {
+    border-radius: 3px;
+    border-style: none;
+    color: #fff;
+    width: 90px;
+    height: 30px;
+    margin-top: 10px;
+    font-family: Mulish", sans-serif";
+    background-color: #000;
+}
+input.card_name, input.mm, input.yy, input.card_number, input.cvc {
+    background-color: #fff;
+    border-radius: 3px;
+    border-color: #dadada;
+    border-style: solid;
+}
+
+input.yy, input.mm, input.cvc {
+    width: 80px;
+}
+
+input.card_name {
+    width: 180px;
+}
+input.card_number {
+    width: 200px;
+}
+
+.ticket_message {
+	text-align: center;
+	font-family: "Mulish", sans-serif;
+	padding-top: 30px;
+	font-size: 18px;
+	padding-bottom: 20px;
+}
+
+.inside_modal {
+    display: inline-flex;
+    width: -webkit-fill-available;
+    justify-content: space-evenly;
+}
+
+button.btn.btn-light {
+    background-color: #d3dddc;
+}
+
+button.btn.btn-dark {
+    background-color: #000;
 }
 
 section.profile-detail {
@@ -260,6 +363,14 @@ padding-top: 45px;
 
 .img_correct img {
 	text-align: center;
+}
+
+.cancel_bron a, .pay_bron a, .cancel_pay a {
+    color: #a4a4a4;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    font-size: 1;
 }
 
 a.logout {
@@ -382,6 +493,11 @@ ol {
 	display: inline-block;
 	padding: 12px 30px;
 }
+
+#login_btn {
+	background-color: #13928c;
+}
+
 .site-btn a{
 	color: #fff;
 }
@@ -1503,64 +1619,15 @@ form td {
 	padding: 12px 42px;
 	border-radius: 4px;
 }
-
-.login__social {
-	padding-top: 52px;
-}
-
-.login__social__links {
-	text-align: center;
-}
-
-.login__social__links span {
+.have_account h3{
 	color: #ffffff;
-	display: block;
-	font-size: 13px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	margin-bottom: 30px;
+    font-weight: 700;
+    font-family: "Oswald", sans-serif;
+    margin-bottom: 30px;
 }
 
-.login__social__links ul li {
-	list-style: none;
-	margin-bottom: 15px;
-}
-
-.login__social__links ul li:last-child {
-	margin-bottom: 0;
-}
-
-.login__social__links ul li a {
-	color: #ffffff;
-	display: block;
-	font-size: 13px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	width: 460px;
-	padding: 14px 0;
-	position: relative;
-	margin: 0 auto;
-}
-
-.login__social__links ul li a.facebook {
-	background: #4267b2;
-}
-
-.login__social__links ul li a.google {
-	background: #ff5722;
-}
-
-.login__social__links ul li a.twitter {
-	background: #1da1f2;
-}
-
-.login__social__links ul li a i {
-	font-size: 20px;
-	position: absolute;
-	left: 32px;
-	top: 14px;
+.have_account {
+    text-align: center;
 }
 
 .input-group {
@@ -1595,23 +1662,6 @@ form td {
 .signup .login__form h5 a {
 	color: #13928c;
 	font-weight: 700;
-}
-
-.signup .login__social__links {
-	text-align: left;
-	padding-left: 40px;
-}
-
-.signup .login__social__links h3 {
-	color: #ffffff;
-	font-weight: 700;
-	font-family: "Oswald", sans-serif;
-	margin-bottom: 30px;
-}
-
-.signup .login__social__links ul li a {
-	margin: 0;
-	text-align: center;
 }
 
 /*---------------------
@@ -1719,9 +1769,7 @@ form td {
 		position: relative;
 		padding-left: 32px;
 	}
-	.login__social__links ul li a {
-		width: 380px;
-	}
+
 	.blog__item__text {
 		padding: 0 50px;
 	}
@@ -1852,9 +1900,6 @@ form td {
 	.login__register {
 		padding-left: 0;
 	}
-	.signup .login__social__links {
-		padding-left: 0;
-	}
 }
 
 /* Wide Mobile = 480px */
@@ -1954,12 +1999,7 @@ form td {
 	.login__form form .input__item {
 		width: auto;
 	}
-	.signup .login__social__links {
-		padding-left: 0;
-	}
-	.login__social__links ul li a {
-		width: auto;
-	}
+
 	.blog__item__text {
 		padding: 0 30px;
 	}
@@ -1994,9 +2034,7 @@ form td {
 	.header__right {
     left: 30vh;
 	}
-	.login__social__links ul li a i {
-		left: 20px;
-	}
+
 	.login__form .forget_pass {
 		position: relative;
 		left: 0;

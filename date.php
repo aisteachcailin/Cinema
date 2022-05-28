@@ -12,20 +12,11 @@ function date_to ($date_to)
 
     if (!empty($date_to)) 
     { 
-
-/*                do {
-*/                    
+              
                     $_SESSION['date_to'] = $date_to;
 
 
                     header('Location: index.php?page=date_to');
-
-/*
-                } while ($row = mysqli_fetch_assoc($result)); */
-            /*} else {
-              header('Location: index.php?page=flight');
-                $text = '<p>По вашему запросу ничего не найдено.</p>';
-            }*/
         
     } else {
         $text = '<p>Задан пустой поисковый запрос.</p>';

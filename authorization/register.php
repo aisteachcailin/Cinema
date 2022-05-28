@@ -10,8 +10,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Anime Template">
-    <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Регистрация</title>
@@ -61,9 +59,8 @@
                                 <input type="file" name="avatar">s
                                 <span class="icon_image"></span>
                             </div>
-                            <button type="submit" class="site-btn" name="user_create" value="create">Зарегистрироваться</button>
-                        <h5>У вас уже есть аккаунт? <a href="index.php?page=authorization">Войти</a></h5>
-                                 <?php
+                            <button type="submit" class="site-btn" value="create">Зарегистрироваться</button>
+        <?php
             if ($_SESSION['message']) {
                 echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
             }
@@ -77,14 +74,8 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="login__social__links">
-                        <h3>Вход с помощью:</h3>
-                        <ul>
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i>Facebook</a>
-                            </li>
-                            <li><a href="#" class="google"><i class="fa fa-google"></i>Google</a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i>Twitter</a></li>
-                        </ul>
+                    <div class="have_account"><h3>У вас уже есть аккаунт?</h3>
+                        <button class="site-btn" id="login_btn"><a href="index.php?page=authorization">Войти</a></button>
                     </div>
                 </div>
             </div>
