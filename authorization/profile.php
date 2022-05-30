@@ -20,15 +20,17 @@ $id_user = $_SESSION['user']['id'];
         <h3 class="modal-title" id="exampleModalLabel">Редактирование профиля</h3>
     </div>
     <div class="modal-body">
+        <?php $sql=$link->query("SELECT * FROM `users` WHERE `id` = '$id_user'");
+        foreach($sql as $users): ?>
         <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
         <div class="input__items">
-            <input type="text" name="full_name" id="full_name" value="<?php echo $_SESSION['user']['full_name'] ?>" placeholder="Имя">
+            <input type="text" name="full_name" id="full_name" value="<?php echo $users['full_name']; ?>" placeholder="Имя">
         </div>
         <div class="input__items">
-            <input type="email" name="email" id="email_correct" value="<?php echo $_SESSION['user']['email'] ?>" placeholder="Email">
+            <input type="email" name="email" id="email_correct" value="<?php echo $users['email']; ?>" placeholder="Email">
         </div>
         <div class="input__items">
-            <input type="file" name="avatar" value="<?php echo $path2; ?>">
+            <input type="file" name="avatar" value="<?php echo $users['avatar']; ?>">
         </div>
         <button type="submit" id="save" class="btn btn-dark" data-bs-dismiss="modal">Сохранить изменения</button>
         </form>
@@ -36,22 +38,20 @@ $id_user = $_SESSION['user']['id'];
           </div>
         </div>
       </div>
-
 <section class="profile-detail">
     <div class="container">
         <div class="row_profile">
-            <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
                 <div class="profile-detail__personal">
                     <div>
-                        <img src="<?php echo $_SESSION['user']['avatar']; ?>" width="200vh" height="200vh" alt="">
+                        <img src="<?php echo $users['avatar']; ?>" width="200vh" height="200vh" alt="">
                     </div>
                        <div class="profile-text">
                         <div class="profile-title">
-                            <h2><?php echo $_SESSION['user']['full_name']; ?></h2>
+                            <h2><?php echo $users['full_name']; ?></h2>
                         </div>
                         <div class="profile-email">
                             <i class="fa fa-envelope"></i>
-                            <a href="#"><?= $_SESSION['user']['email']; ?></a>
+                            <a href="#"><?php echo $users['email']; ?></a>
                         </div>
                         <div>
                         <a data-bs-toggle="modal" data-bs-target="#correct_profile"><img width="25vh" id="edit_profile" src="images/edit.png"></a>
@@ -61,7 +61,7 @@ $id_user = $_SESSION['user']['id'];
                         </div>
                        </div>  
                 </div>
-                </form>
+            <?php endforeach; ?>
         <div class="middle">
                 <div class="col-lg-4 col-md-6 col-sm-8">
                     <div class="product__sidebar">
@@ -180,14 +180,15 @@ $id_user = $_SESSION['user']['id'];
         </div>
       </div>
 
-                                        <div class="pay_bron"><a href="" data-bs-toggle="modal" data-bs-target="#pay_bron">Оплатить</a></div>
+    <div class="pay_bron"><a href="" data-bs-toggle="modal" data-bs-target="#pay_bron">Оплатить</a></div>
+    
 <!-- оплата забронированного билета -->
 
 <div class="modal fade" id="pay_bron" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Оплата</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Оплата билета</h3>
       </div>
     <div class="modal-body">
         <table id="pay_form">
@@ -225,7 +226,7 @@ $id_user = $_SESSION['user']['id'];
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Возврат</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Возврат билета</h3>
       </div>
     <div class="modal-body">
         <div class="ticket_message">Вы действительно хотите вернуть билет?</div>
@@ -252,8 +253,13 @@ $id_user = $_SESSION['user']['id'];
 
                     <div class="empty"><?php
                         if ($a == 0) {
-                            echo 'У вас пока нет билетов'; ?>
-                            <img id="empty" src="images/empty.png" alt="">
+                            echo 'У вас пока нет билетов :('; ?>
+<lord-icon
+    src="https://cdn.lordicon.com/tdxypxgp.json"
+    trigger="loop-on-hover"
+    colors="primary:#ffffff,secondary:#ff5722"
+    style="width:110px;height:110px; margin-left: 120px;">
+</lord-icon>
                 <?php  }  
                     ?>
                     </div>
@@ -268,6 +274,6 @@ $id_user = $_SESSION['user']['id'];
         </div>
     </div>
 </section>
-
+<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
  </body>
 </html>

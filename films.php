@@ -67,7 +67,6 @@ require('connect.php');
                             </div>
                             </div>
                         </div>
-
                         <div class="row">
                               <?php 
                                 foreach ($sql as $flm): ?>
@@ -96,10 +95,19 @@ require('connect.php');
                                     </div>
                                 </div>
                             </div>
-
                                     <?php endforeach;?>
                     </div>
-                   
+                    <div class="empty_request">
+                        <?php 
+                         if ($flm['id'] == "") { ?>
+                            <lord-icon
+                            src="https://cdn.lordicon.com/msoeawqm.json"
+                            trigger="loop"
+                            colors="primary:#ffffff,secondary:#ff5722"
+                            style="width:60px;height:60px">
+                            </lord-icon>
+                         <?php  echo "К сожалению, по вашему запросу ничего не найдено"; } ?>
+                    </div>
                 </div>
                 <div class="filter_genre" style="width: 17%;">
             <div class="cat">
@@ -158,7 +166,7 @@ require('connect.php');
 </div>
 </section>
 <!-- Product Section End -->
-
+<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 </body>
 
 </html>

@@ -14,9 +14,12 @@ $id_time = (int)$_SESSION['id_time'];
     }*/
 // конец проверки выбранных мест
 
+if ($id_user == 0) {
+    $_SESSION['message'] = "Пожалуйста авторизуйтесь";
+    header("Location: ../index.php?page=register");
+    }else{
 
 // добавить в БД выбранный билет
-
 foreach ($_SESSION['bron'] as $ticket) {
         $row = $ticket['row'];//ряд
         $place = $ticket['place'];//место
@@ -29,5 +32,6 @@ unset($_SESSION['bron']);
 
 $redirect = isset($_SERVER['HTTP_REFERER'])? $_SERVER['HTTP_REFERER']:'redirect-form.html';
 header("Location: $redirect");
-	
+
+	}
 ?> 

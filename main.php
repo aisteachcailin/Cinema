@@ -79,7 +79,7 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8">
                                 <div class="section-title">
-                                    <h4>В тренде</h4>
+                                    <h4>Фильмы</h4>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
@@ -128,7 +128,7 @@
                     <div class="product__sidebar">
                         <div class="product__sidebar__view">
                             <div class="section-title">
-                                <h5>Самый высокий рейтинг</h5>
+                                <h4>Рекомендации</h4>
                             </div>
                                    <?php
         $i=0;

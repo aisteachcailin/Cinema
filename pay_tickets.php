@@ -14,9 +14,23 @@ $id_time = (int)$_SESSION['id_time'];
     }*/
 // конец проверки выбранных мест
 
+// запрет на бронирование занятых мест
+if ($id_user == 0) {
+    $_SESSION['message'] = "Пожалуйста авторизуйтесь";
+    header("Location: ../index.php?page=register");
+    }else{
+
+$sql_tickets=$link->query("SELECT * FROM `tickets` WHERE `status` = 'Б' OR `status` = 'В'" );
+        foreach ($sql_tickets as $tickets) {
+            if($_SESSION['bron']['0']['place'] == $tickets['number_place'] AND $_SESSION['bron']['0']['row'] == $tickets['number_row']) {
+                header("Location: ../index.php?page=scheme");
+                unset($_SESSION['bron']);
+                break;
+
+            }
+        }
 
 // добавить в БД выбранный билет
-
 foreach ($_SESSION['bron'] as $ticket) {
         $row = $ticket['row'];//ряд
         $place = $ticket['place'];//место
@@ -29,5 +43,5 @@ unset($_SESSION['bron']);
 
 $redirect = isset($_SERVER['HTTP_REFERER'])? $_SERVER['HTTP_REFERER']:'redirect-form.html';
 header("Location: $redirect");
-        
+ }  
 ?> 

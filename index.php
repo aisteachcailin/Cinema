@@ -32,9 +32,11 @@ if (!isset($page)) {
     require('authorization/register.php');
 } elseif ($page == 'admin') {
     require('authorization/admin.php');
+} elseif ($page == 'hall') {
+    require('hall.php');
 } elseif ($page == 'openFilm') {
     $idf = $_GET['id'];
-    $_SESSION['id_film'] = $idf ;//запоминаем id выбранного фильма
+    $_SESSION['id_film'] = $idf;//запоминаем id выбранного фильма
     $flm = [];
     foreach ($sql as $film) {
         if($film['id'] == $idf) {

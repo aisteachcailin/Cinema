@@ -92,47 +92,30 @@
                      <div class="openFilm_price"><img src="images/ticket.png"><?php echo $flm['price'].'₽';?></div>
                     </div>
                     <hr>
-                    <table id="sessions_day_time">
-                        <?php
-                                $sql_sch=$link->query("SELECT * FROM `schedule`");
-                                     foreach ($sql_sch as $sch):
-                                       if ($sch['id_film'] == $flm['id'])
-                                            {
-                        ?>
-                        <tr>
-                        <td><div class="day"><?php
-                                $sql_day=$link->query("SELECT * FROM `day`");
-                                                foreach ($sql_day as $day):
-                                                     if ($day['id_day'] == $sch['id_day'])
-                                                {
-                                                    echo date_format(date_create($day['day']), 'd-m-Y');
-                                                    
-                                                 }
+    <table id="sessions_day_time">
+        <?php $idf = $_SESSION['id_film']; ?>
+        <tr>
+        <?php $sql_d=$link->query("SELECT DISTINCT `id_day` FROM `schedule` WHERE `id_film` = '$idf'");
+            foreach($sql_d as $d):
+                $idd = $d['id_day']; ?>
 
-                                                endforeach;?> 
-                        </div></td>
+                <?php $sql_day=$link->query("SELECT * FROM `day`"); 
+                    foreach ($sql_day as $day):
+                        if ($d['id_day'] == $day['id_day']) { ?>
+                        <td><div class="day"><?php echo $day['day'];
+                        } 
+                    endforeach; ?>
+                        </div></td>  
 
-
-                        
-                        <td><div class="time"><a href="index.php?page=scheme&id_film=<?php echo $sch['id_film']; ?>&id_day=<?php echo $sch['id_day']; ?>&id_time=<?php echo $sch['id_time']; ?>"><?php
-                                $sql_time=$link->query("SELECT * FROM `time`");
-                                                foreach ($sql_time as $time):
-                                                     if ($time['id_time'] == $sch['id_time'])
-                                                {
-                                                   echo date_format(date_create($time['time']), 'H:i');
-                                                    
-                                                 }
-
-                                                endforeach;?> 
-                                                </a>
-                        </div></td>
-
-
-
-
-                        </tr>
-                                <?php } endforeach; ?>
-                   </table>
+                <?php $sql_time=$link->query("SELECT * FROM `films` f JOIN `schedule` s ON f.`id` = s.`id_film` JOIN `day` d ON s.`id_day` = d.`id_day` JOIN `time` t ON s.`id_time` = t.`id_time` WHERE `id_film` = '$idf' AND s.`id_day` = '$idd'");
+                    foreach ($sql_time as $time): ?>
+                        <td><div class="time"><a href="index.php?page=scheme&id_film=<?php echo $sch['id_film']; ?>&id_day=<?php echo $sch['id_day']; ?>&id_time=<?php echo $sch['id_time']; ?>">
+                            <?php echo date_format(date_create($time['time']), 'H:i'); ?>
+                        </a></div></td>
+                    <?php endforeach;?> 
+                </tr>
+            <?php endforeach; ?>   
+    </table>
                     <hr>
                     </div>
                     <div class="facts">

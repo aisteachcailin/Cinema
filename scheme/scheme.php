@@ -78,7 +78,7 @@ session_start();
                         }
                        endforeach;?>
 
-                       <button class="place" style="background-color: <?php echo $color; ?>" id="btn" onclick="soldout()" name="<?php echo $i;?>" value="<?php echo $j;?>" ><div class="number_place"><?php echo $j;?></div></button>
+                       <button class="place" style="background-color: <?php echo $color; ?>" id="btn" name="<?php echo $i;?>" value="<?php echo $j;?>" ></button>
                      </td>
 
                 <?php 
@@ -104,18 +104,5 @@ session_start();
  </div>
 
     </div>
-<script>
-    function soldout() {
-
-document.getElementById("btn");
-btn.setAttribute('disabled', true);
-/*
-  if (<?php $color == '#ff5722' ?>){
-    btn.setAttribute('disabled', true);
-  }else{
-    btn.removeAttribute('disabled');
-  }*/
-}
-</script> 
 </body>
 </html>

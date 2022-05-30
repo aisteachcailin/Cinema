@@ -45,7 +45,7 @@
                                 <li><a href="index.php?page=index">Главная</a></li>
                                 <li><a href="index.php?page=films">Фильмы</a>
                                 </li>
-                                <li><a href="index.php?page=scheme">Кинозал</a></li>
+                                <li><a href="index.php?page=hall">Кинозал</a></li>
                                 <li><a href="#">Контакты</a></li>
                             </ul>
                         </nav>

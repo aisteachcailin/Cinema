@@ -16,26 +16,6 @@
         $_SESSION['message'] = 'Введите другой логин';
         header('Location: ../../index.php?page=register');
 
-    } elseif (empty($full_name)) {
-
-        $_SESSION['message'] = 'Введены не все данные';
-        header('Location: ../../index.php?page=register');
-
-    } elseif (empty($email)) {
-
-        $_SESSION['message'] = 'Введены не все данные';
-        header('Location: ../../index.php?page=register');
-
-    } elseif (empty($login)) {
-
-        $_SESSION['message'] = 'Введены не все данные';
-        header('Location: ../../index.php?page=register');
-
-      } elseif (empty($password)) {
-
-        $_SESSION['message'] = 'Введены не все данные';
-        header('Location: ../../index.php?page=register');
-
     } elseif (empty($password_confirm)) {
 
         $_SESSION['message'] = 'Введены не все данные';

@@ -160,15 +160,20 @@ img#img_ticket {
 	margin-left: 15vh;
 	margin-top: 7vh;
 }
+
+.empty_request {
+	font-family: "Mulish", sans-serif;
+	font-size: 20px;
+	color: #a4a4a4;
+	margin-left: 7vh;
+	margin-top: 7vh;
+} 
+
 .middle {
 	display: flex;
 	padding-top: 10vh;	
 	flex-direction: row-reverse;
 	justify-content: space-between;
-}
-
-img#empty {
-    margin-left: 18vh;
 }
 
 .film_ticket {
@@ -603,7 +608,7 @@ ol {
 
 .header__menu ul li a:hover {
 	color: #ff5722;
-	transition: 1.5s;
+	transition: 0.7s;
 }
 
 .header__menu ul li:last-child {
@@ -927,7 +932,7 @@ section.product.spad.film {
 }
 
 .day {
-	color: #a4a4a4;
+	color: #fff;
 }
 
 table#sessions_day_time td {
@@ -1268,7 +1273,7 @@ input.form-control {
 
 .filter_genre a:hover{
     color: #ff5722;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 .filter_genre {

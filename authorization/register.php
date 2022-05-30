@@ -36,11 +36,11 @@
                         <h3>Регистрация</h3>
                         <form action="authorization/handler_form/signup.php" method="post" enctype="multipart/form-data">
                             <div class="input__item">
-                                <input type="text" name="full_name" placeholder="ФИО">
+                                <input type="text" name="full_name" placeholder="Имя" pattern="^\S{2,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Имя должно быть не менее двух символов' : '');" required>
                                 <span class="icon_profile"></span>
                             </div>
                              <div class="input__item">
-                                <input type="text" name="login" placeholder="Логин">
+                                <input type="text" name="login" placeholder="Логин" pattern="^\S{5,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Логин должен быть не менее 6 символов' : '');" required>
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
@@ -48,7 +48,7 @@
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="password" placeholder="Пароль">
+                                <input type="password" name="password" placeholder="Пароль" pattern="^\S{5,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Пароль должен быть не менее 6 символов' : '');" required>
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
@@ -56,7 +56,7 @@
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="file" name="avatar">s
+                                <input type="file" name="avatar" >
                                 <span class="icon_image"></span>
                             </div>
                             <button type="submit" class="site-btn" value="create">Зарегистрироваться</button>
