@@ -102,14 +102,14 @@
                 <?php $sql_day=$link->query("SELECT * FROM `day`"); 
                     foreach ($sql_day as $day):
                         if ($d['id_day'] == $day['id_day']) { ?>
-                        <td><div class="day"><?php echo $day['day'];
+                        <td><div class="day"><?php echo date_format(date_create($day['day']), 'd-m-Y');
                         } 
                     endforeach; ?>
                         </div></td>  
 
                 <?php $sql_time=$link->query("SELECT * FROM `films` f JOIN `schedule` s ON f.`id` = s.`id_film` JOIN `day` d ON s.`id_day` = d.`id_day` JOIN `time` t ON s.`id_time` = t.`id_time` WHERE `id_film` = '$idf' AND s.`id_day` = '$idd'");
                     foreach ($sql_time as $time): ?>
-                        <td><div class="time"><a href="index.php?page=scheme&id_film=<?php echo $sch['id_film']; ?>&id_day=<?php echo $sch['id_day']; ?>&id_time=<?php echo $sch['id_time']; ?>">
+                        <td><div class="time"><a href="index.php?page=scheme&id_film=<?php echo $time['id_film']; ?>&id_day=<?php echo $time['id_day']; ?>&id_time=<?php echo $time['id_time']; ?>">
                             <?php echo date_format(date_create($time['time']), 'H:i'); ?>
                         </a></div></td>
                     <?php endforeach;?> 

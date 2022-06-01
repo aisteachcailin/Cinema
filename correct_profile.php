@@ -2,20 +2,11 @@
 session_start();
     require_once 'connect.php';
 
-    $avatar = $_POST['avatar'];
+    $full_name = $_POST['full_name'];
     $email = $_POST['email'];
     $login = $_SESSION['user']['login'];
-        
 
-    $path = 'authorization/avatars/' . time() . $_FILES['avatar']['name'];
-        if (!move_uploaded_file($_FILES['avatar']['tmp_name'], './' . $path)) {
-         $_SESSION['message'] = 'Ошибка при загрузке сообщения';
-            header('Location: index.php?page=profile');
-
-        }
-        $avatar = $path;
-
-      $correct_profile = mysqli_query($link, "UPDATE `users` SET `full_name` = '$full_name', `email` = '$email', `avatar` = '$avatar' WHERE `login` = '$login'");
+      $correct_profile = mysqli_query($link, "UPDATE `users` SET `full_name` = '$full_name', `email` = '$email' WHERE `login` = '$login'");
 
       
 if ($_SESSION['user']['role'] == 1) {

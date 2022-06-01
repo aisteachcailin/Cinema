@@ -43,7 +43,7 @@ require('connect.php');
                                         <h4>Фильмы</h4>
                                     </div>
                     <div class="sort">
-                        <div class="sort_text"><i class="fal fa-sort-alt"></i>Сортировать:</div>
+                        <div class="sort_text"><a href="index.php?page=film_genre&id_genre=0"><img src="images/loading.png" id="reset" alt=""></a>Сортировать:</div>
                         <forma action="" method="get">
                     <select class="selecter" onchange="location=value">
                         <option value="" selected="selected">По названию</option>

@@ -17,7 +17,7 @@ $id_user = $_SESSION['user']['id'];
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Редактирование профиля</h3>
+        <h4 class="modal-title" id="exampleModalLabel">Редактирование профиля</h4>
     </div>
     <div class="modal-body">
         <?php $sql=$link->query("SELECT * FROM `users` WHERE `id` = '$id_user'");
@@ -29,21 +29,60 @@ $id_user = $_SESSION['user']['id'];
         <div class="input__items">
             <input type="email" name="email" id="email_correct" value="<?php echo $users['email']; ?>" placeholder="Email">
         </div>
-        <div class="input__items">
-            <input type="file" name="avatar" value="<?php echo $users['avatar']; ?>">
+        <div class="buttons_yn">
+        <button type="submit" id="save" class="btn btn-dark" data-bs-dismiss="modal">Сохранить</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Отменить</button>
         </div>
-        <button type="submit" id="save" class="btn btn-dark" data-bs-dismiss="modal">Сохранить изменения</button>
+        </form>
+    <?php endforeach; ?>
+        </div>
+          </div>
+        </div>
+      </div>
+
+<!-- редактирование аватарки -->
+<div class="modal fade" id="correct_avatar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Редактирование аватарки</h4>
+    </div>
+    <div class="modal-body">
+        <?php 
+        foreach($sql as $users): ?>
+        <form action="./correct_avatar.php" method="post" enctype="multipart/form-data">
+        <div class="edit_avatar">
+            <img src="<?php echo $users['avatar']; ?>" width="200vh" height="200vh" alt="">
+        <div class="input__items">
+            <div class="file-input2">
+            <input type="file" name="avatar" id="file" class="file" value="<?php echo $users['avatar']; ?>">
+                <label for="file">
+                Выбрать изображение
+                <p class="file-name"></p>
+                </label>                             
+                        </div>
+        </div>
+        </div>
+        <div class="buttons_yn">
+        <button type="submit" id="save" class="btn btn-dark" data-bs-dismiss="modal">Сохранить</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Отменить</button>
+        </div>
         </form>
         </div>
           </div>
         </div>
       </div>
+
+
 <section class="profile-detail">
     <div class="container">
         <div class="row_profile">
                 <div class="profile-detail__personal">
-                    <div>
+                    <div class="avatars_profile">
                         <img src="<?php echo $users['avatar']; ?>" width="200vh" height="200vh" alt="">
+                    <div>
+                        <a data-bs-toggle="modal" data-bs-target="#correct_avatar"><img src="images/plus.png" id="upload" alt=""></a>
+                    </div>
                     </div>
                        <div class="profile-text">
                         <div class="profile-title">
@@ -71,7 +110,7 @@ $id_user = $_SESSION['user']['id'];
                             </div>
                                    <?php
         $i=0;
-        $sql=$link->query("SELECT * FROM `films`");
+        $sql=$link->query("SELECT * FROM `films` ORDER BY `year` DESC");
          foreach ($sql as $flm): 
             $i++;
             if ($i > 3) {
@@ -108,6 +147,8 @@ $id_user = $_SESSION['user']['id'];
             $a = $tickets['id_film'];
             $row =  $tickets['number_row'];
             $place =  $tickets['number_place'];
+            $day =  $tickets['day'];
+            $time =  $tickets['time'];
             $status =  $tickets['status']; 
             $flm_m = [];
             foreach ($sql_m as $film_m) {
@@ -121,27 +162,20 @@ $id_user = $_SESSION['user']['id'];
                         <tr>
                             <td><img id="img_ticket" src="<?php echo $flm_m['imgs'];?>"></td>
                             <td><div class="film_ticket"><?php echo $flm_m['name']; ?></div>
-                                <div class="day_ticket"><span>Дата:</span><?php $sql_sch= $link->query("SELECT * FROM `schedule`");
-                                      $sql_day= $link->query("SELECT * FROM `day`");
-                                foreach($sql_sch as $sch):
-                                    if ($sch['id_film'] == $flm_m['id']) {
+                                <div class="day_ticket"><span>Дата:</span>
+                                <?php $sql_day= $link->query("SELECT * FROM `day`");
                                         foreach($sql_day as $day):
-                                    if ($sch['id_day'] == $day['id_day']) {
+                                    if ($tickets['day'] == $day['id_day']) {
+                                        $idd = $day['id_day'];
                                         echo date_format(date_create($day['day']), 'd-m-Y');
                                     }
-                                endforeach;
-                                    }
-                                endforeach;
-                        ?></div>
+                                endforeach; ?>
+                                </div>
                                 <div class="time_ticket"><span>Время:</span><?php
                                       $sql_time= $link->query("SELECT * FROM `time`");
-                                foreach($sql_sch as $sch):
-                                    if ($sch['id_film'] == $flm_m['id']) {
-                                        foreach($sql_time as $time):
-                                    if ($sch['id_time'] == $time['id_time']) {
+                                foreach($sql_time as $time):
+                                    if ($tickets['time'] == $time['id_time']) {
                                        echo date_format(date_create($time['time']), 'H:i');
-                                    }
-                                endforeach;
                                     }
                                 endforeach;
                         ?></div>
@@ -153,10 +187,17 @@ $id_user = $_SESSION['user']['id'];
                                     <?php if ($status == 'Б') { ?>
                                 <div class="bron_status"><?php echo 'Забронировано'; ?>
                                 </div> 
-                            <a data-toggle="collapse" href="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1" style="font-size: 16px; color: #a4a4a4;"><img src="images/more.png" style="padding-top: 10px;" alt=""></a>
+                            <a data-toggle="collapse" href="javascript:void(0)" onclick="showHide('<?php echo $tickets['id'] ?>')" aria-expanded="false" aria-controls="multiCollapseExample1" style="font-size: 16px; color: #a4a4a4;"><img src="images/more.png" style="padding-top: 10px;" alt=""></a>
 
-                            <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                        <div class="cancel_bron"><a href="" data-bs-toggle="modal" data-bs-target="#cancel_bron">Отменить бронь</a></div>
+
+                            <div class="collapse multi-collapse" id="<?php echo $tickets['id'] ?>">
+            <div class="cancel_bron"><a href="" data-bs-toggle="modal" data-bs-target="#cancel_bron">Отменить бронь</a></div>
+            <div class="pay_bron"><a href="" data-bs-toggle="modal" data-bs-target="#pay_bron">Оплатить</a></div>
+
+
+        </div>
+                        
+                                        
 
 <!-- отмена бронирования -->
 
@@ -164,7 +205,7 @@ $id_user = $_SESSION['user']['id'];
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Отмена бронирования</h3>
+        <h4 class="modal-title" id="exampleModalLabel">Отмена бронирования</h4>
       </div>
     <div class="modal-body">
         <div class="ticket_message">Вы действительно хотите отменить бронирование?</div>
@@ -180,7 +221,6 @@ $id_user = $_SESSION['user']['id'];
         </div>
       </div>
 
-    <div class="pay_bron"><a href="" data-bs-toggle="modal" data-bs-target="#pay_bron">Оплатить</a></div>
     
 <!-- оплата забронированного билета -->
 
@@ -188,30 +228,32 @@ $id_user = $_SESSION['user']['id'];
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Оплата билета</h3>
+        <h4 class="modal-title" id="exampleModalLabel">Оплата билета</h4>
       </div>
+      <form action="./pay_bron.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id_ticket" value="<?php echo $tickets['id']; ?>">
     <div class="modal-body">
         <table id="pay_form">
     <tr id="card_data1">
-      <td><input type="text" class="card_name" placeholder="Your name" autofocus></td>
-      <td><input type="text" class="mm" placeholder="MM"></td>
-      <td><input type="text" class="yy" placeholder="YY"></td>
+      <td><input type="text" class="card_name" placeholder="Your name" pattern="^\S{2,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Имя должно быть не менее двух символов' : '');" required></td>
+      <td><input type="text" class="mm" placeholder="MM" pattern="[0-9]{2,2}" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Месяц должен состоять из 2-х цифр' : '');" required></td>
+      <td><input type="text" class="yy" placeholder="YY" pattern="[0-9]{2,2}" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Год должен состоять из 2-х цифр' : '');" required></td>
     </tr>
     <tr id="card_data2">
-      <td><input type="text" class="card_number" placeholder="XXXX XXXX XXXX XXXX"></td>
-      <td><input type="text" class="cvc" placeholder="CVC"></td>
+      <td><input type="text" class="card_number" placeholder="XXXX XXXX XXXX XXXX" pattern="[0-9]{16,16}" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Номер карты должен состоять из 16-и цифр' : '');" required></td>
+      <td><input type="text" class="cvc" placeholder="CVC" pattern="[0-9]{3,3}" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'CVC код должен состоять из 3-х цифр' : '');" required></td>
     </tr> 
-    <tr>
-        <td><form action="./pay_bron.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id_ticket" value="<?php echo $tickets['id']; ?>">
-        <button type="submit" class="data_pay">Оплатить</button></form></td>
-    </tr>
     </table>
-        </div>
+        <div class="buttons_yn">
+        <button type="submit" id="save" class="btn btn-dark" data-bs-dismiss="modal">Оплатить</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Отменить</button>
+        </div>  
+    </div>
+</form>
           </div>
         </div>
       </div>
-                            </div>
+    </div>
                                 
                                     <?php } elseif ($status == 'В') { ?>
                                 <div class="pay_status"><?php echo 'Оплачено'; ?></div>
@@ -226,7 +268,7 @@ $id_user = $_SESSION['user']['id'];
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Возврат билета</h3>
+        <h4 class="modal-title" id="exampleModalLabel">Возврат билета</h4>
       </div>
     <div class="modal-body">
         <div class="ticket_message">Вы действительно хотите вернуть билет?</div>
@@ -274,6 +316,21 @@ $id_user = $_SESSION['user']['id'];
         </div>
     </div>
 </section>
-<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<script type="text/javascript">
+            function showHide(element_id) {
+                //Если элемент с id-шником element_id существует
+                if (document.getElementById(element_id)) { 
+                    //Записываем ссылку на элемент в переменную obj
+                    var obj = document.getElementById(element_id); 
+                    //Если css-свойство display не block, то: 
+                    if (obj.style.display != "block") { 
+                        obj.style.display = "block"; //Показываем элемент
+                    }
+                    else obj.style.display = "none"; //Скрываем элемент
+                }
+                //Если элемент с id-шником element_id не найден, то выводим сообщение
+                else alert("Элемент с id: " + element_id + " не найден!"); 
+            }   
+</script>
  </body>
 </html>

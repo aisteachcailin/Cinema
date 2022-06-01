@@ -1,5 +1,6 @@
 <?php
 session_start();
+$id_user = $_SESSION['user']['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,21 +24,58 @@ session_start();
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Редактирование профиля</h3>
+        <h4 class="modal-title" id="exampleModalLabel">Редактирование профиля</h4>
     </div>
     <div class="modal-body">
+        <?php $sql=$link->query("SELECT * FROM `users` WHERE `id` = '$id_user'");
+        foreach($sql as $users): ?>
         <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
         <div class="input__items">
-            <input type="text" name="full_name" id="full_name" value="<?php echo $_SESSION['user']['full_name'] ?>" placeholder="Имя">
+            <input type="text" name="full_name" id="full_name" value="<?php echo $users['full_name']; ?>" placeholder="Имя">
         </div>
         <div class="input__items">
-            <input type="email" name="email" value="<?php echo $_SESSION['user']['email'] ?>" placeholder="Email">
+            <input type="email" name="email" id="email_correct" value="<?php echo $users['email']; ?>" placeholder="Email">
         </div>
-        <div class="input__items">
-            <input type="file" name="avatar" value="<?php echo $path2; ?>">
+        <div class="buttons_yn">
+        <button type="submit" id="save" class="btn btn-dark" data-bs-dismiss="modal">Сохранить</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Отменить</button>
         </div>
-        <button type="submit" id="save" class="btn btn-dark" data-bs-dismiss="modal">Сохранить изменения</button>
         </form>
+    <?php endforeach; ?>
+        </div>
+          </div>
+        </div>
+      </div>
+
+<!-- редактирование аватарки -->
+<div class="modal fade" id="correct_avatar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Редактирование аватарки</h4>
+    </div>
+    <div class="modal-body">
+        <?php 
+        foreach($sql as $users): ?>
+        <form action="./correct_avatar.php" method="post" enctype="multipart/form-data">
+        <div class="edit_avatar">
+            <img src="<?php echo $users['avatar']; ?>" width="200vh" height="200vh" alt="">
+        <div class="input__items">
+            <div class="file-input2">
+            <input type="file" name="avatar" id="file" class="file" value="<?php echo $users['avatar']; ?>">
+                <label for="file">
+                Выбрать изображение
+                <p class="file-name"></p>
+                </label>                             
+                        </div>
+        </div>
+        </div>
+        <div class="buttons_yn">
+        <button type="submit" id="save" class="btn btn-dark" data-bs-dismiss="modal">Сохранить</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Отменить</button>
+        </div>
+        </form>
+        <?php endforeach; ?>
         </div>
           </div>
         </div>
@@ -46,18 +84,20 @@ session_start();
 <section class="profile-detail">
     <div class="container">
         <div class="row_profile">
-            <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
                 <div class="profile-detail__personal">
+                    <div class="avatars_profile">
+                        <img src="<?php echo $users['avatar']; ?>" width="200vh" height="200vh" alt="">
                     <div>
-                        <img src="<?= $_SESSION['user']['avatar'] ?>" width="200vh" height="200vh" alt="">
+                        <a data-bs-toggle="modal" data-bs-target="#correct_avatar"><img src="images/plus.png" id="upload" alt=""></a>
+                    </div>
                     </div>
                        <div class="profile-text">
                         <div class="profile-title">
-                            <h2><?php echo $_SESSION['user']['full_name'] ?></h2>
+                            <h2><?php echo $users['full_name']; ?></h2>
                         </div>
                         <div class="profile-email">
                             <i class="fa fa-envelope"></i>
-                            <a href="#"><?= $_SESSION['user']['email'] ?></a>
+                            <a href="#"><?php echo $users['email']; ?></a>
                         </div>
                         <div>
                         <a data-bs-toggle="modal" data-bs-target="#correct_profile"><img width="25vh" id="edit_profile" src="images/edit.png"></a>
@@ -67,14 +107,59 @@ session_start();
                         </div>
                        </div>  
                 </div>
-                </form>
             <div class="info_for_admin">
             <div class="cards">
-           <div class="card">
-                  <div class="card-body">
-                    <div class="section-title">
-                        <h4>Сеансы</h4>
+        
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Фильмы</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Сеансы</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="films">
+            <table class="table">
+            <?php $sql=$link->query("SELECT * FROM `films`");
+                foreach ($sql as $flm): ?>
+                <form action="./correct_films.php" method="post" enctype="multipart/form-data">
+                <tr>
+                   <td><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><img src="<?php echo $flm['imgs'];?>" width=240vh;></a></td>
+                   <input type="hidden" name="id" value="<?php echo $flm['id'];?>">
+                   <td><div class="filminfo">
+                <div class="film__details__title">
+                    <h3><input type="text" name="name" id="name" value="<?php echo $flm['name'];?>"><button type="submit" id="btncheck"><img src="images/check.png" width="20vh"></h3>
+                </div>
+                <div class="film_rating">
+                    <div class="ep"><input type="text" id="rating" name="rating" value="<?php echo $flm['rating'];?>">/10</div>
+                    <div class="pr"><input type="text" id="price" name="price" value="<?php echo $flm['price'];?>">₽</div>
+                </div>
+                    <p><input type="text" name="descr" id="descr" value="<?php echo $flm['descr'];?>"></p>
+                <div class="film__details__widget">
+                    <div class="row">
+                     <div class="film_info">
+                          <ul>
+                            <li><span>Год выпуска:</span><input type="text" id="year" name="year" value="<?php echo $flm['year'];?>"></li>
+                            <li><span>Режиссёр:</span><input type="text" name="director" id="director" value="<?php echo $flm['director'];?>"></li>
+                            <li><span>Страна:</span><input type="text" name="country" id="country" value="<?php echo $flm['country'];?>"></li>
+                            <li><span>Длительность:</span><input type="text" name="lasting" id="lasting" value="<?php echo $flm['lasting'];?>"></li>
+                            <li><span>Главные герои:</span><input type="text" name="main_roles" id="main_roles" value="<?php echo $flm['main_roles'];?>"></li>
+                          </ul>
+                        </div>
                     </div>
+                </div>
+                    </td>
+                </tr>
+                 </form>
+                <?php endforeach;?>
+            </table>
+
+        </div></div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><div class="card">
+                  <div class="card-body">
                       <table class="table">
                         <tbody>
                             <?php 
@@ -125,7 +210,7 @@ session_start();
                                     foreach ($sql_time as $t):
                                             if ($t['id_time'] == $s['id_time'])
                                                 {
-                                                    echo $t['time'];
+                                                    echo date_format(date_create($t['time']), 'H:i');
                                                  }
                                     endforeach; ?>">
                             <button type="submit" id="btncheck-session"><img src="images/check.png" width="20vh">
@@ -140,78 +225,12 @@ session_start();
                         </tbody>
                       </table>
                     </div>
-                  </div>
-
-<!--                 <div class="card">
-                  <div class="card-body">
-                    <div class="section-title">
-                        <h4>Пользователи</h4>
-                    </div>
-                      <table class="table">
-                        <tbody>
-                            <?php 
-                            $sql_users=$link->query("SELECT * FROM `users`");
-                                foreach ($sql_users as $u): ?>
-                        <tr>
-                            <td><img src="<?php echo $u['avatar'];?>" alt=""></td>
-                            <td><?php echo $u['full_name'];?></td>
-                            <td><?php echo $u['email'];?></td>
-                        </tr>
-                            <?php endforeach;?>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>  -->
+                  </div></div>
 </div>
-        <div class="films">
-            <div class="section-title">
-              <h4>Фильмы</h4>
-            </div>
-            <table class="table" style="width: auto;">
-            <?php $sql=$link->query("SELECT * FROM `films`");
-                foreach ($sql as $flm): ?>
-                <form action="./correct_films.php" method="post" enctype="multipart/form-data">
-                <tr>
-                   <td><a href="index.php?page=openFilm&id=<?php echo $flm['id']; ?>"><img src="<?php echo $flm['imgs'];?>" width=240vh;></a></td>
-                   <input type="hidden" name="id" value="<?php echo $flm['id'];?>">
-                   <td><div class="filminfo">
-                <div class="film__details__title">
-                    <h3><input type="text" name="name" id="name" value="<?php echo $flm['name'];?>"><button type="submit" id="btncheck"><img src="images/check.png" width="20vh"></h3>
-                </div>
-                <div class="film_rating">
-                    <div class="ep"><input type="text" id="rating" name="rating" value="<?php echo $flm['rating'];?>">/10</div>
-                    <div class="pr"><input type="text" id="price" name="price" value="<?php echo $flm['price'];?>">₽</div>
-                </div>
-                    <p><input type="text" name="descr" id="descr" value="<?php echo $flm['descr'];?>"></p>
-                <div class="film__details__widget">
-                    <div class="row">
-                     <div class="film_info">
-                          <ul>
-                            <li><span>Жанр:</span><input type="text" name="genre" id="genre" value="<?php
-                                $sql_gen=$link->query("SELECT * FROM `genre`");
-                            foreach ($sql_gen as $gen):
-                            if ($gen['id_genre'] == $flm['genre']) {
-                                echo $gen['name']; }
-                            endforeach; ?>"></li>
-                            <li><span>Год выпуска:</span><input type="text" id="year" name="year" value="<?php echo $flm['year'];?>"></li>
-                            <li><span>Режиссёр:</span><input type="text" name="director" id="director" value="<?php echo $flm['director'];?>"></li>
-                            <li><span>Страна:</span><input type="text" name="country" id="country" value="<?php echo $flm['country'];?>"></li>
-                            <li><span>Длительность:</span><input type="text" name="lasting" id="lasting" value="<?php echo $flm['lasting'];?>"></li>
-                            <li><span>Главные герои:</span><input type="text" name="main_roles" id="main_roles" value="<?php echo $flm['main_roles'];?>"></li>
-                          </ul>
-                        </div>
-                    </div>
-                </div>
-                    </td>
-                </tr>
-                 </form>
-                <?php endforeach;?>
-            </table>
 
-        </div>
 </div>
-                </div>
-              </div>
+
+</div>
 </section>
 
 </body>

@@ -55,10 +55,15 @@
                                 <input type="password" name="password_confirm" placeholder="Подтверждение пароля">
                                 <span class="icon_lock"></span>
                             </div>
-                            <div class="input__item">
-                                <input type="file" name="avatar" >
-                                <span class="icon_image"></span>
-                            </div>
+                            
+                                <div class="file-input">
+                                <input type="file" name="avatar" id="file" class="file">
+                                  <label for="file">
+                                    Выбрать аватар
+                                    <p class="file-name"></p>
+                                  </label>                             
+                                </div>
+                            
                             <button type="submit" class="site-btn" value="create">Зарегистрироваться</button>
         <?php
             if ($_SESSION['message']) {
@@ -88,6 +93,20 @@
 
     <!-- Js Plugins -->
     <script src="js/main.js"></script>
+    <script>
+        const file = document.querySelector('#file');
+file.addEventListener('change', (e) => {
+  // Get the selected file
+  const [file] = e.target.files;
+  // Get the file name and size
+  const { name: fileName, size } = file;
+  // Convert size in bytes to kilo bytes
+  const fileSize = (size / 1000).toFixed(2);
+  // Set the text content
+  const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+  document.querySelector('.file-name').textContent = fileNameAndSize;
+});
+    </script>
 
 </body>
 

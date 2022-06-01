@@ -17,7 +17,7 @@
                     <ul>
                         <li><a href="index.php?page=index">Главная</a></li>
                         <li><a href="index.php?page=films">Фильмы</a></li>
-                        <li><a href="#">Расписание</a></li>
+                        <li><a href="index.php?page=hall">Кинозал</a></li>
                         <li><a href="#">Контакты</a></li>    
 
                     </ul>
@@ -41,3 +41,4 @@
 <script src="js/jquery.slicknav.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
+<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>

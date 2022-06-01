@@ -33,5 +33,5 @@ unset($_SESSION['bron']);
 $redirect = isset($_SERVER['HTTP_REFERER'])? $_SERVER['HTTP_REFERER']:'redirect-form.html';
 header("Location: $redirect");
 
-	}
+    }
 ?> 

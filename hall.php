@@ -5,8 +5,16 @@
     <title>Схема кинозала</title>
     <link rel="stylesheet" href="scheme/css/scheme.css">
 </head>
-
+<style>
+    button#btn {
+    background-color: #19bfb7;
+}
+    button#btn:hover {
+    background-color: #82d8d4;
+}
+</style>
 <body style="background-color: #05060b">
+
      <div class="scheme" style="margin-left: 130px;">
         <div class="places">
 <table >
@@ -17,7 +25,7 @@
                  <?php  for ($j=1;$j<=10;$j++):?>
 
                     <td>
-                       <button class="place" style="background-color: #19bfb7;" id="btn" name="<?php echo $i;?>" value="<?php echo $j;?>" ></button>
+                       <button class="place" id="btn" name="<?php echo $i;?>" value="<?php echo $j;?>" ></button>
                      </td>
 
                 <?php 

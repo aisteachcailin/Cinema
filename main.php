@@ -79,7 +79,7 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8">
                                 <div class="section-title">
-                                    <h4>Фильмы</h4>
+                                    <h4>Самые новые</h4>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="row">
-                        <?php $sql=$link->query("SELECT * FROM `films`");
+                        <?php $sql=$link->query("SELECT * FROM `films` ORDER BY `year` DESC");
                           foreach ($sql as $flm): ?>
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
@@ -128,12 +128,11 @@
                     <div class="product__sidebar">
                         <div class="product__sidebar__view">
                             <div class="section-title">
-                                <h4>Рекомендации</h4>
+                                <h5>Самый высокий рейтинг</h5>
                             </div>
-                                   <?php
-        $i=0;
-         foreach ($sql as $flm): 
-            $sql=$link->query("SELECT * FROM `films` ORDER BY `rating` DESC");
+    <?php $sql=$link->query("SELECT * FROM `films` ORDER BY `rating` DESC");
+            $i=0;
+         foreach ($sql as $flm):
             $i++;
             if ($i > 5) {
                 break;
