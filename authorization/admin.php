@@ -191,7 +191,7 @@ $id_user = $_SESSION['user']['id'];
                                             if ($d['id_day'] == $s['id_day'])
                                                 {
                                                     echo $d['day'];
-                                                 }
+                                                 } 
                                     endforeach; ?>">
                             <button type="submit" id="btncheck-session"><img src="images/check.png" width="20vh">
                             </td>

@@ -24,7 +24,7 @@ $id_user = $_SESSION['user']['id'];
         foreach($sql as $users): ?>
         <form action="./correct_profile.php" method="post" enctype="multipart/form-data">
         <div class="input__items">
-            <input type="text" name="full_name" id="full_name" value="<?php echo $users['full_name']; ?>" placeholder="Имя">
+            <input type="text" name="full_name" id="full_name" value="<?php echo $users['full_name']; ?>" placeholder="Имя" pattern="^\S{2,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Имя должно быть не менее 2-х и не более 16 символов, не содержать пробелы' : '');" required>
         </div>
         <div class="input__items">
             <input type="email" name="email" id="email_correct" value="<?php echo $users['email']; ?>" placeholder="Email">
@@ -130,11 +130,11 @@ $id_user = $_SESSION['user']['id'];
                 </div>
             </div>
            <div class="card_profile">
+                  <div class="card-body">
+                      <table class="table">
                 <div class="section-title">
                         <h4>Билеты</h4>
                  </div>
-                  <div class="card-body">
-                      <table class="table">
                         <tbody>
                             <?php
         $sql_m= $link->query("SELECT * FROM `films`");
@@ -193,7 +193,6 @@ $id_user = $_SESSION['user']['id'];
                             <div class="collapse multi-collapse" id="<?php echo $tickets['id'] ?>">
             <div class="cancel_bron"><a href="" data-bs-toggle="modal" data-bs-target="#cancel_bron">Отменить бронь</a></div>
             <div class="pay_bron"><a href="" data-bs-toggle="modal" data-bs-target="#pay_bron">Оплатить</a></div>
-
 
         </div>
                         

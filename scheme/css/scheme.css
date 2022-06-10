@@ -5,6 +5,7 @@
 	text-align: center;
 	padding-left: 40vh;
 	padding-right: 40vh;
+    position: relative;
 }
 
 .place {
@@ -57,6 +58,12 @@ button.pay {
 	background-color: #22ff57;
 }
 
+table#session_info {
+    position: absolute;
+    top: 150px;
+    left: 500px;
+}
+
 .bron p, .pay p {
 	width: fit-content;
 	padding-left: 10px;
@@ -72,10 +79,15 @@ button.pay {
     margin-top: 30px;
 }
 
-.film_name {
-	font-size: 20px;
+.film_name, .film_day, .film_time {
+	font-size: 18px;
 	font-family: "Mulish", sans-serif;
 	color: #fff;
+    float: left;
+}
+
+.film_name span, .film_day span, .film_time span {
+    color: #a4a4a4;
 }
 
 input[type="text"] {

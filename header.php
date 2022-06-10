@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/plyr.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -43,10 +44,9 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li><a href="index.php?page=index">Главная</a></li>
-                                <li><a href="index.php?page=films">Фильмы</a>
-                                </li>
+                                <li><a href="index.php?page=films">Фильмы</a></li>
                                 <li><a href="index.php?page=hall">Кинозал</a></li>
-                                <li><a href="#">Контакты</a></li>
+                                <li><a href="index.php?page=contacts">Поддержка</a></li>
                             </ul>
                         </nav>
                     </div>

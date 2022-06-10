@@ -451,6 +451,36 @@ ol {
 	margin-bottom: 30px;
 }
 
+/*contacts*/
+
+input#contacts_name, input#contacts_email, textarea#contacts_mes {
+    width: -webkit-fill-available;
+    padding: 10px;
+}
+
+.form-item, .form-textarea-wrapper {
+	padding: 20px;	
+}
+
+input#contacts_submit, .section-title1 {
+    margin-left: 20px;
+    margin-top: 10px;
+} 
+
+.section-title1 {
+	color: #fff;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: "Oswald", sans-serif;
+}
+
+.contact-form {
+    padding-bottom: 20vh;
+    padding-top: 10vh;
+}
+
+/*contacts*/
+
 .section-title h4,
 .section-title h5 {
 	color: #ffffff;

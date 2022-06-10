@@ -14,8 +14,6 @@ function date_to ($date_to)
     { 
               
                     $_SESSION['date_to'] = $date_to;
-
-
                     header('Location: index.php?page=date_to');
         
     } else {

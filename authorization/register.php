@@ -36,23 +36,23 @@
                         <h3>Регистрация</h3>
                         <form action="authorization/handler_form/signup.php" method="post" enctype="multipart/form-data">
                             <div class="input__item">
-                                <input type="text" name="full_name" placeholder="Имя" pattern="^\S{2,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Имя должно быть не менее двух символов' : '');" required>
+                                <input type="text" name="full_name" id="fullname" placeholder="Имя" pattern="^\S{2,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Имя должно быть не менее 2-х и не более 16 символов, не содержать пробелы' : '');" required>
                                 <span class="icon_profile"></span>
                             </div>
                              <div class="input__item">
-                                <input type="text" name="login" placeholder="Логин" pattern="^\S{5,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Логин должен быть не менее 6 символов' : '');" required>
+                                <input type="text" name="login" id="login" placeholder="Логин" pattern="^\S{5,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Логин должен быть не менее 6 и не более 16 символов' : '');" required>
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="email" name="email" placeholder="Электронная почта">
+                                <input type="email" name="email" id="email" placeholder="Электронная почта">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="password" placeholder="Пароль" pattern="^\S{5,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Пароль должен быть не менее 6 символов' : '');" required>
+                                <input type="password" name="password" id="password" placeholder="Пароль" pattern="^\S{5,16}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Пароль должен быть не менее 6 символов и не более 16 символов' : '');" required>
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="password" name="password_confirm" placeholder="Подтверждение пароля">
+                                <input type="password" id="password_confirm" name="password_confirm" placeholder="Подтверждение пароля">
                                 <span class="icon_lock"></span>
                             </div>
                             
@@ -64,7 +64,7 @@
                                   </label>                             
                                 </div>
                             
-                            <button type="submit" class="site-btn" value="create">Зарегистрироваться</button>
+                            <button type="submit" class="site-btn" id="reg" value="create">Зарегистрироваться</button>
         <?php
             if ($_SESSION['message']) {
                 echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';
@@ -73,9 +73,6 @@
         ?> 
 
     </form>
-
-
-
                     </div>
                 </div>
                 <div class="col-lg-6">

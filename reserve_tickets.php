@@ -16,7 +16,7 @@ $id_time = (int)$_SESSION['id_time'];
 
 if ($id_user == 0) {
     $_SESSION['message'] = "Пожалуйста авторизуйтесь";
-    header("Location: ../index.php?page=register");
+    header("Location: index.php?page=authorization");
     }else{
 
 // добавить в БД выбранный билет
@@ -32,6 +32,5 @@ unset($_SESSION['bron']);
 
 $redirect = isset($_SERVER['HTTP_REFERER'])? $_SERVER['HTTP_REFERER']:'redirect-form.html';
 header("Location: $redirect");
-
-    }
+}
 ?> 

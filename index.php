@@ -34,6 +34,8 @@ if (!isset($page)) {
     require('authorization/admin.php');
 } elseif ($page == 'hall') {
     require('hall.php');
+} elseif ($page == 'contacts') {
+    require('contacts.php');
 } elseif ($page == 'openFilm') {
     $idf = $_GET['id'];
     $_SESSION['id_film'] = $idf;//запоминаем id выбранного фильма

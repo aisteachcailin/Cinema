@@ -18,7 +18,7 @@
                         <li><a href="index.php?page=index">Главная</a></li>
                         <li><a href="index.php?page=films">Фильмы</a></li>
                         <li><a href="index.php?page=hall">Кинозал</a></li>
-                        <li><a href="#">Контакты</a></li>    
+                        <li><a href="index.php?page=contacts">Поддержка</a></li>    
 
                     </ul>
 
